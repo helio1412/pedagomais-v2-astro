@@ -63,22 +63,7 @@ export default function VideoPlayer({ videoId, accountId }: VideoPlayerProps) {
           paddingTop: '56.25%',
           display: isLoaded ? 'block' : 'none'
         }}
-      >
-        <iframe
-          id={`panda-${videoId}`}
-          src={`https://player-vz-d8c67f45-3b9.tv.pandavideo.com.br/embed/?v=${videoId}`}
-          style={{
-            border: 'none',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-          }}
-          allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
-          allowFullScreen
-          width="100%"
-          height="100%"
-        />
-      </div>
+      />
     </div>
   );
 }
