@@ -23,7 +23,7 @@
   }
   
   .btn-secondary {
-    @apply bg-neutral-beige text-primary hover:bg-neutral-beige/90 shadow-lg hover:shadow-xl;
+    @apply bg-green-600 text-white hover:bg-green-700 shadow-lg hover:shadow-xl;
   }
   
   .container-custom {
