@@ -61,10 +61,7 @@ export default function VideoPlayer({ videoId, accountId }: VideoPlayerProps) {
         style={{ 
           position: 'relative', 
           paddingTop: '56.25%',
-          display: isLoaded ? 'block' : 'none',
-          transform: 'translateY(0)',
-          objectFit: 'cover',
-          objectPosition: 'center center'
+          display: isLoaded ? 'block' : 'none'
         }}
       />
     </div>
