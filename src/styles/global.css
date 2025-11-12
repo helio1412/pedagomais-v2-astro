@@ -79,11 +79,4 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;  /* Chrome, Safari and Opera */
   }
-  
-  /* Centralizar vídeos nos depoimentos */
-  .video-container video,
-  .video-container iframe {
-    object-fit: cover !important;
-    object-position: center center !important;
-  }
 }
