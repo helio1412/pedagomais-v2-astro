@@ -6,7 +6,6 @@ export default function PricingSection() {
     minutes: 0,
     seconds: 0,
   });
-  const [paymentUrl, setPaymentUrl] = useState('https://seguro.pedagomais.net.br/r/HDX7T5XKCH');
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -29,29 +28,6 @@ export default function PricingSection() {
     const timer = setInterval(calculateTimeLeft, 1000);
 
     return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    // Adicionar UTMs apenas no cliente após hydration
-    const params = new URLSearchParams(window.location.search);
-    const utmSource = params.get('utm_source') || 'organic';
-    const utmCampaign = params.get('utm_campaign') || '';
-    const utmMedium = params.get('utm_medium') || '';
-    const utmContent = params.get('utm_content') || '';
-    const utmTerm = params.get('utm_term') || '';
-    
-    const trackingCode = `${utmSource}hQwK21wXxRhQwK21wXxRhQwK21wXxRhQwK21wXxR`;
-    
-    const url = new URL('https://seguro.pedagomais.net.br/r/HDX7T5XKCH');
-    url.searchParams.set('utm_source', utmSource);
-    url.searchParams.set('utm_campaign', utmCampaign);
-    url.searchParams.set('utm_medium', utmMedium);
-    url.searchParams.set('utm_content', utmContent);
-    url.searchParams.set('utm_term', utmTerm);
-    url.searchParams.set('xcod', trackingCode);
-    url.searchParams.set('sck', trackingCode);
-    
-    setPaymentUrl(url.toString());
   }, []);
 
   return (
@@ -136,7 +112,7 @@ export default function PricingSection() {
 
             <div className="mb-8">
               <a
-                href={paymentUrl}
+                href="https://seguro.pedagomais.net.br/r/HDX7T5XKCH"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-secondary w-full text-base md:text-xl py-4 md:py-6 mb-4 flex items-center justify-center gap-2"
