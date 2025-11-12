@@ -47,7 +47,7 @@ export default function VideoPlayer({ videoId, accountId }: VideoPlayerProps) {
   }, [isVisible, videoId, accountId, isLoaded]);
 
   return (
-    <div ref={containerRef} className="relative rounded-2xl overflow-hidden shadow-2xl">
+    <div ref={containerRef} className="relative rounded-2xl overflow-hidden shadow-2xl max-h-[350px] md:max-h-none">
       {!isLoaded && (
         <div className="aspect-video bg-neutral-dark/10 animate-pulse flex items-center justify-center">
           <div className="text-center">
