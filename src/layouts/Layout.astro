@@ -52,13 +52,24 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://www.peda
     
     <title>{title}</title>
     
-    <!-- Tracking Scripts (Deferred) -->
+    <!-- ========================================
+         TRACKING SCRIPTS
+         ======================================== -->
+    
+    <!-- UTMify: Captura e propagação de parâmetros UTM -->
+    <!-- Previne xcod, sck e subids duplicados -->
     <script is:inline src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
   </head>
   <body>
     <slot />
     
-    <!-- UTMify Pixel (After Interactive) -->
+    <!-- ========================================
+         ANALYTICS & CONVERSION TRACKING
+         ======================================== -->
+    
+    <!-- UTMify Pixel: Tracking de eventos e conversões -->
+    <!-- Pixel ID: 68f99820255533a461fcd392 -->
+    <!-- Integrado com Meta/Facebook Pixel -->
     <script is:inline>
       window.pixelId = "68f99820255533a461fcd392";
       var a = document.createElement("script");
@@ -66,6 +77,27 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://www.peda
       a.setAttribute("defer", "");
       a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
       document.head.appendChild(a);
+    </script>
+    
+    <!-- TikTok Pixel: Tracking de conversões TikTok Ads -->
+    <!-- Pixel ID: 6910954e8bae4faf26fa893d -->
+    <script is:inline>
+      window.tikTokPixelId = "6910954e8bae4faf26fa893d";
+      var a = document.createElement("script");
+      a.setAttribute("async", "");
+      a.setAttribute("defer", "");
+      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel-tiktok.js");
+      document.head.appendChild(a);
+    </script>
+    
+    <!-- Microsoft Clarity: Heatmaps e gravação de sessões -->
+    <!-- Project ID: u2wcafbtae -->
+    <script is:inline>
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "u2wcafbtae");
     </script>
   </body>
 </html>
