@@ -35,23 +35,7 @@ export default function VideoPlayer({ videoId, accountId }: VideoPlayerProps) {
     const script = document.createElement('script');
     script.src = `https://scripts.converteai.net/${accountId}/players/${videoId}/player.js`;
     script.async = true;
-    script.onload = () => {
-      setIsLoaded(true);
-      
-      // Forçar fullscreen no mobile quando o vídeo começar
-      setTimeout(() => {
-        const videoElement = document.querySelector(`#vid_${videoId} video`);
-        if (videoElement && /Android/i.test(navigator.userAgent)) {
-          videoElement.addEventListener('play', () => {
-            if (videoElement.requestFullscreen) {
-              videoElement.requestFullscreen();
-            } else if ((videoElement as any).webkitEnterFullscreen) {
-              (videoElement as any).webkitEnterFullscreen();
-            }
-          }, { once: true });
-        }
-      }, 1000);
-    };
+    script.onload = () => setIsLoaded(true);
     
     document.body.appendChild(script);
 
