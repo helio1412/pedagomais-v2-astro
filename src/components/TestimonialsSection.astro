@@ -1,0 +1,56 @@
+---
+import VideoPlayer from './islands/VideoPlayer';
+
+const testimonials = [
+  {
+    videoId: '68ffa8a0bb6e7502f83e0a64',
+    name: 'Ana Carolina',
+    achievement: 'Aprovada em 2º lugar - Prefeitura de Belo Horizonte',
+  },
+  {
+    videoId: '68ffa8af0b9ea1a1027b16a6',
+    name: 'Robson Santos',
+    achievement: 'Aprovado - Secretaria de Educação do Estado',
+  },
+  {
+    videoId: '68ffa8bb8e09727f1b10e072',
+    name: 'Mariana Lima',
+    achievement: 'Aprovada em 3º lugar - Prefeitura de São Paulo',
+  },
+];
+---
+
+<section class="section-padding bg-neutral-beige">
+  <div class="container-custom">
+    <div class="text-center mb-8 md:mb-12 lg:mb-16">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark mb-4">
+        Veja o que nossos alunos aprovados dizem
+      </h2>
+      <p class="text-lg md:text-xl text-neutral-dark/85">
+        Histórias reais de quem conquistou a aprovação com o PedagoMais
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {testimonials.map((testimonial) => (
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="relative">
+            <VideoPlayer 
+              client:visible
+              videoId={testimonial.videoId}
+              accountId="d8c67f45-3b94-4e79-acef-492de65509d1"
+            />
+          </div>
+          <div class="p-6">
+            <p class="font-bold text-neutral-dark text-lg mb-2">
+              {testimonial.name}
+            </p>
+            <p class="text-sm text-secondary font-medium">
+              ✅ {testimonial.achievement}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

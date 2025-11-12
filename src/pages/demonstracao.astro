@@ -1,0 +1,8 @@
+---
+import Layout from '../layouts/Layout.astro';
+import QuizDemo from '../components/islands/QuizDemo';
+---
+
+<Layout title="Demonstração - PedagoMais" description="Experimente gratuitamente nosso simulado inteligente de Pedagogia">
+  <QuizDemo client:only="react" />
+</Layout>

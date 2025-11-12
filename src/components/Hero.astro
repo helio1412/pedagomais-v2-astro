@@ -1,0 +1,89 @@
+---
+import VideoPlayer from './islands/VideoPlayer';
+---
+
+<section class="relative bg-gradient-to-br from-primary via-secondary to-accent-cyan section-padding overflow-hidden">
+  <!-- Padrão geométrico estático -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute top-0 left-0 w-full h-full" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;);"></div>
+    </div>
+  </div>
+
+  <div class="container-custom relative z-10">
+    <div class="text-center mb-8 md:mb-12">
+      <!-- Logo -->
+      <div class="mb-6 flex justify-center relative">
+        <div class="relative bg-white/95 backdrop-blur-sm p-3 rounded-3xl shadow-2xl">
+          <img
+            src="/logo-padagomais.png"
+            alt="PedagoMais"
+            width="100"
+            height="100"
+            class="w-20 md:w-24 h-auto"
+            loading="eager"
+          />
+        </div>
+      </div>
+
+      <!-- Título -->
+      <h1 class="text-2xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
+        <span class="bg-gradient-to-r from-white via-neutral-beige to-white bg-clip-text text-transparent drop-shadow-lg">
+          Chega de gabaritos e PDFs!
+        </span>
+      </h1>
+
+      <p class="text-base md:text-lg lg:text-xl text-white/95 mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed font-medium drop-shadow-md">
+        Simulados inteligentes que explicam suas respostas em tempo real. Estude Pedagogia a qualquer hora e em qualquer lugar
+      </p>
+    </div>
+
+    <!-- Vídeo -->
+    <div class="max-w-4xl mx-auto mb-8">
+      <p class="text-center text-lg md:text-xl font-semibold text-white mb-4 drop-shadow-md">
+        Veja o vídeo abaixo
+      </p>
+      
+      <VideoPlayer 
+        client:visible
+        videoId="68ffa9280a5b1514b8ecc588"
+        accountId="d8c67f45-3b94-4e79-acef-492de65509d1"
+      />
+
+      <!-- Aviso sobre som -->
+      <div class="flex items-center justify-center gap-2 mt-4 text-white/90">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+        </svg>
+        <p class="text-sm md:text-base font-medium">
+          Verifique se o som está ligado
+        </p>
+      </div>
+    </div>
+
+    <!-- CTAs -->
+    <div class="text-center">
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a 
+          href="#cta-final"
+          class="btn btn-primary"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Quero Minha Aprovação
+        </a>
+        <a 
+          href="/demonstracao"
+          class="btn btn-secondary"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+          Demonstração
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,122 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import WhatYouGetSection from '../components/WhatYouGetSection.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import StudyAreaSection from '../components/StudyAreaSection.astro';
+import CertificateSection from '../components/CertificateSection.astro';
+import FAQSection from '../components/islands/FAQSection';
+import PricingSection from '../components/islands/PricingSection';
+---
+
+<Layout title="PedagoMais - Plataforma de Simulados de Pedagogia">
+  <Hero />
+  
+  <!-- Benefits Section -->
+  <section class="section-padding bg-neutral-beige">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark mb-4">
+          Por que escolher o PedagoMais?
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          A plataforma mais completa para sua aprovação em concursos de Pedagogia
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Benefit 1 -->
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Aplicativo Instalável</h3>
+          <p class="text-gray-600">
+            Estude onde e quando quiser! Acesse pelo celular, tablet ou computador. Baixe nosso app e tenha todo o conteúdo disponível offline.
+          </p>
+        </div>
+
+        <!-- Benefit 2 -->
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Questões Comentadas</h3>
+          <p class="text-gray-600">
+            Cada questão vem com explicação detalhada. Entenda o porquê de cada resposta e aprenda com seus erros.
+          </p>
+        </div>
+
+        <!-- Benefit 3 -->
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Simulados Inteligentes</h3>
+          <p class="text-gray-600">
+            Sistema adaptativo que identifica suas dificuldades e foca nos temas que você mais precisa estudar.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O que você vai receber -->
+  <WhatYouGetSection />
+
+  <!-- Depoimentos -->
+  <TestimonialsSection />
+
+  <!-- Mapas Mentais -->
+  <StudyAreaSection />
+
+  <!-- Certificado -->
+  <CertificateSection />
+
+  <!-- Seção de Pagamento com Timer -->
+  <PricingSection client:visible />
+
+  <!-- FAQ -->
+  <FAQSection client:visible />
+
+  <!-- Footer -->
+  <footer class="bg-neutral-dark text-white py-12">
+    <div class="container-custom">
+      <div class="grid md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <h3 class="font-bold text-lg mb-4">PedagoMais</h3>
+          <p class="text-gray-400">
+            A plataforma mais completa para sua aprovação em concursos de Pedagogia.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-bold text-lg mb-4">Links Rápidos</h3>
+          <ul class="space-y-2">
+            <li><a href="/demonstracao" class="text-gray-400 hover:text-white transition-colors">Demonstração</a></li>
+            <li><a href="/contato" class="text-gray-400 hover:text-white transition-colors">Contato</a></li>
+            <li><a href="/termos-de-uso" class="text-gray-400 hover:text-white transition-colors">Termos de Uso</a></li>
+            <li><a href="/politica-de-privacidade" class="text-gray-400 hover:text-white transition-colors">Política de Privacidade</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold text-lg mb-4">Contato</h3>
+          <p class="text-gray-400 mb-2">
+            <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            contato@pedagomais.net.br
+          </p>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+        <p>&copy; {new Date().getFullYear()} PedagoMais. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+</Layout>
