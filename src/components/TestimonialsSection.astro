@@ -34,7 +34,7 @@ const testimonials = [
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
       {testimonials.map((testimonial) => (
         <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-          <div class="relative">
+          <div class="relative max-h-[400px] md:max-h-none overflow-hidden">
             <VideoPlayer 
               client:visible
               videoId={testimonial.videoId}
