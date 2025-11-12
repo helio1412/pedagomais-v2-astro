@@ -35,7 +35,23 @@ export default function VideoPlayer({ videoId, accountId }: VideoPlayerProps) {
     const script = document.createElement('script');
     script.src = `https://scripts.converteai.net/${accountId}/players/${videoId}/player.js`;
     script.async = true;
-    script.onload = () => setIsLoaded(true);
+    script.onload = () => {
+      setIsLoaded(true);
+      
+      // Forçar fullscreen no mobile quando o vídeo começar
+      setTimeout(() => {
+        const videoElement = document.querySelector(`#vid_${videoId} video`);
+        if (videoElement && /Android/i.test(navigator.userAgent)) {
+          videoElement.addEventListener('play', () => {
+            if (videoElement.requestFullscreen) {
+              videoElement.requestFullscreen();
+            } else if ((videoElement as any).webkitEnterFullscreen) {
+              (videoElement as any).webkitEnterFullscreen();
+            }
+          }, { once: true });
+        }
+      }, 1000);
+    };
     
     document.body.appendChild(script);
 
@@ -47,7 +63,7 @@ export default function VideoPlayer({ videoId, accountId }: VideoPlayerProps) {
   }, [isVisible, videoId, accountId, isLoaded]);
 
   return (
-    <div ref={containerRef} className="relative rounded-2xl overflow-hidden shadow-2xl max-h-[350px] md:max-h-none">
+    <div ref={containerRef} className="relative rounded-2xl overflow-hidden shadow-2xl">
       {!isLoaded && (
         <div className="aspect-video bg-neutral-dark/10 animate-pulse flex items-center justify-center">
           <div className="text-center">
