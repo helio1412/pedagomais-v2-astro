@@ -79,4 +79,11 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;  /* Chrome, Safari and Opera */
   }
+  
+  /* Centralizar vídeos cortados verticalmente */
+  .max-h-\[400px\] iframe,
+  .max-h-\[400px\] video {
+    object-fit: cover;
+    object-position: center center;
+  }
 }
