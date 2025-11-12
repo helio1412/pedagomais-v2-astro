@@ -23,18 +23,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://www.peda
     <link rel="icon" type="image/webp" href="/favicon.webp" />
     <link rel="canonical" href={canonicalURL} />
     
-    <!-- Preconnect para recursos externos -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    <!-- Preconnect para CDN de vídeos (otimização LCP) -->
-    <link rel="preconnect" href="https://scripts.converteai.net" />
-    <link rel="preconnect" href="https://player-vz-d8c67f45-3b9.tv.pandavideo.com.br" />
-    <link rel="preconnect" href="https://cdn.converteai.net" />
-    <link rel="dns-prefetch" href="https://images.converteai.net" />
-    
-    <!-- Preload poster do vídeo hero -->
-    <link rel="preload" href="/video-poster.svg" as="image" />
+    <!-- Preconnect para recursos críticos -->
+    <link rel="preconnect" href="https://scripts.converteai.net" crossorigin />
+    <link rel="preconnect" href="https://cdn.converteai.net" crossorigin />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
