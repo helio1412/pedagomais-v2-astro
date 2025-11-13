@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main class="min-h-screen bg-[#F5F5DC] py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+        {/* Header */}
+        <div class="text-center mb-8">
+          <div class="flex justify-center mb-6">
+            <div class="relative bg-white/95 backdrop-blur-sm p-3 md:p-4 rounded-3xl shadow-2xl">
+              <img src="/logo-padagomais.png" alt="PedagoMais" class="w-16 h-16 md:w-20 md:h-20 object-contain" />
+            </div>
+          </div>
+          <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Política de Privacidade</h1>
+          <p class="text-gray-600">Última atualização: {new Date().toLocaleDateString('pt-BR')}</p>
+        </div>
+
+        {/* Content */}
+        <div class="prose prose-lg max-w-none text-gray-700">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">1. Informações que Coletamos</h2>
+          <p class="mb-4">
+            Coletamos informações para oferecer e melhorar nossos serviços:
+          </p>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Dados Pessoais:</strong> Nome, e-mail, CPF, telefone</li>
+            <li><strong>Dados de Acesso:</strong> Endereço IP, navegador, dispositivo</li>
+            <li><strong>Dados de Uso:</strong> Progresso nos simulados, tempo de estudo</li>
+            <li><strong>Dados de Pagamento:</strong> Informações processadas por gateway seguro</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">2. Como Usamos Suas Informações</h2>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li>Para fornecer acesso à plataforma e conteúdos</li>
+            <li>Para processar pagamentos e gerenciar assinaturas</li>
+            <li>Para enviar comunicados importantes sobre sua conta</li>
+            <li>Para personalizar sua experiência de aprendizado</li>
+            <li>Para melhorar nossos serviços e criar novos conteúdos</li>
+            <li>Para fins estatísticos e de análise de uso</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">3. Compartilhamento de Dados</h2>
+          <p class="mb-4">
+            Não vendemos suas informações pessoais. Compartilhamos dados apenas com:
+          </p>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Gateway de Pagamento:</strong> Para processar transações</li>
+            <li><strong>Plataformas de Email:</strong> Para envio de comunicados</li>
+            <li><strong>Analytics:</strong> Para análise de uso do site</li>
+            <li><strong>Quando exigido por lei:</strong> Autoridades governamentais</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">4. Armazenamento e Segurança</h2>
+          <p class="mb-6">
+            Seus dados são armazenados em servidores seguros com criptografia SSL. Adotamos medidas 
+            técnicas e administrativas para proteger suas informações contra acesso não autorizado, 
+            perda ou destruição.
+          </p>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">5. Cookies e Tecnologias Similares</h2>
+          <p class="mb-6">
+            Utilizamos cookies para melhorar sua experiência, lembrar preferências e analisar o uso 
+            do site. Você pode configurar seu navegador para recusar cookies, mas isso pode afetar 
+            algumas funcionalidades da plataforma.
+          </p>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">6. Seus Direitos</h2>
+          <p class="mb-4">
+            Você tem direito de:
+          </p>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li>Acessar seus dados pessoais</li>
+            <li>Corrigir informações incorretas</li>
+            <li>Solicitar exclusão de dados</li>
+            <li>Cancelar consentimento para comunicação</li>
+            <li>Exportar seus dados</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">7. Menores de Idade</h2>
+          <p class="mb-6">
+            Nossos serviços são destinados a maiores de 18 anos. Não coletamos intencionalmente 
+            informações de menores. Se identificarmos que coletamos dados de menor, procederemos 
+            com a exclusão imediata.
+          </p>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">8. Alterações nesta Política</h2>
+          <p class="mb-6">
+            Podemos atualizar esta política periodicamente. Notificaremos os usuários sobre 
+            alterações significativas através de e-mail ou aviso na plataforma.
+          </p>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">9. Contato</h2>
+          <p class="mb-6">
+            Para exercer seus direitos ou tirar dúvidas sobre esta política, entre em contato:
+          </p>
+          <p class="mb-6">
+            <strong>E-mail:</strong> <a href="mailto:contato@pedagomais.net.br" class="text-primary hover:underline">contato@pedagomais.net.br</a><br>
+            <strong>Assunto:</strong> Política de Privacidade
+          </p>
+        </div>
+
+        {/* Footer */}
+        <div class="mt-12 pt-8 border-t border-gray-200 text-center">
+          <a href="/" class="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary text-white font-bold px-6 py-3 rounded-xl hover:opacity-90 transition-opacity">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Voltar para Home
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

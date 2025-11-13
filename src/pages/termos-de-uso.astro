@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main class="min-h-screen bg-[#F5F5DC] py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+        {/* Header */}
+        <div class="text-center mb-8">
+          <div class="flex justify-center mb-6">
+            <div class="relative bg-white/95 backdrop-blur-sm p-3 md:p-4 rounded-3xl shadow-2xl">
+              <img src="/logo-padagomais.png" alt="PedagoMais" class="w-16 h-16 md:w-20 md:h-20 object-contain" />
+            </div>
+          </div>
+          <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Termos de Uso</h1>
+          <p class="text-gray-600">Última atualização: {new Date().toLocaleDateString('pt-BR')}</p>
+        </div>
+
+        {/* Content */}
+        <div class="prose prose-lg max-w-none text-gray-700">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">1. Aceitação dos Termos</h2>
+          <p class="mb-6">
+            Ao acessar e utilizar a plataforma PedagoMais, você concorda com estes Termos de Uso. 
+            Se não concordar com estes termos, não utilize nossos serviços.
+          </p>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">2. Descrição do Serviço</h2>
+          <p class="mb-6">
+            A PedagoMais é uma plataforma educacional online que oferece simulados, questões comentadas, 
+            mapas mentais e materiais de estudo para concursos de Pedagogia. Nossos serviços são oferecidos 
+            através de planos de assinatura mensal ou anual.
+          </p>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">3. Responsabilidades do Usuário</h2>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li>Manter a confidencialidade de seus dados de acesso</li>
+            <li>Não compartilhar sua conta com terceiros</li>
+            <li>Utilizar o conteúdo para fins pessoais e educacionais</li>
+            <li>Não reproduzir ou distribuir nosso material sem autorização</li>
+            <li>Respeitar os direitos autorais do conteúdo disponibilizado</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">4. Pagamento e Renovação</h2>
+          <p class="mb-6">
+            Os pagamentos são processados através de plataforma segura. As assinaturas são renovadas 
+            automaticamente ao final do período contratado, salvo cancelamento pelo usuário com até 
+            48 horas antes da renovação.
+          </p>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">5. Propriedade Intelectual</h2>
+          <p class="mb-6">
+            Todo o conteúdo da PedagoMais, incluindo questões, explicações, mapas mentais e materiais 
+            didáticos, é protegido por direitos autorais e pertence à PedagoMais ou seus licenciadores.
+          </p>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">6. Cancelamento e Reembolso</h2>
+          <p class="mb-6">
+            O usuário pode cancelar sua assinatura a qualquer momento. Nosso prazo para solicitação 
+            de reembolso é de até 7 dias após a contratação, mediante comprovação de insatisfação 
+            com o serviço.
+          </p>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">7. Limitação de Responsabilidade</h2>
+          <p class="mb-6">
+            A PedagoMais não garante a aprovação em concursos, mas oferece as melhores ferramentas 
+            para que o usuário se prepare adequadamente. Não nos responsabilizamos por decisões 
+            tomadas com base em nosso conteúdo.
+          </p>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">8. Alterações nos Termos</h2>
+          <p class="mb-6">
+            Reservamo-nos o direito de alterar estes termos a qualquer momento. As alterações serão 
+            comunicadas aos usuários através de e-mail ou aviso na plataforma.
+          </p>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">9. Contato</h2>
+          <p class="mb-6">
+            Para dúvidas sobre estes Termos de Uso, entre em contato conosco através do e-mail: 
+            <a href="mailto:suporte@pedagomais.net.br" class="text-primary hover:underline">suporte@pedagomais.net.br</a>
+          </p>
+        </div>
+
+        {/* Footer */}
+        <div class="mt-12 pt-8 border-t border-gray-200 text-center">
+          <a href="/" class="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary text-white font-bold px-6 py-3 rounded-xl hover:opacity-90 transition-opacity">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Voltar para Home
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
