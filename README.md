@@ -18,7 +18,7 @@ Nova versão da landing page do PedagoMais construída com **Astro 4** para máx
 - **TypeScript:** 5.x
 - **Hosting:** Vercel / Netlify / Cloudflare Pages
 
-## 📦 Instalação
+## 📦 Instalação.
 
 ```bash
 # Instalar dependências
