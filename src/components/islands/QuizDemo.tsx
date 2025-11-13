@@ -234,11 +234,8 @@ export default function QuizDemo() {
 
             {/* CTA Box */}
             <div className="bg-[#F5F2FE] border-2 border-green-500 rounded-xl md:rounded-2xl p-4 md:p-8 mb-6 md:mb-8 text-left">
-              <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
-                <svg className="w-6 h-6 md:w-8 md:h-8 text-red-500 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
-                </svg>
-                <h3 className="text-lg md:text-2xl font-bold text-gray-900 leading-tight">🎯 Quer Garantir Sua Aprovação?</h3>
+              <div className="mb-3 md:mb-4">
+                <h3 className="text-lg md:text-2xl font-bold text-gray-900 leading-tight text-center">🎯 Quer Garantir Sua Aprovação?</h3>
               </div>
               
               <p className="text-sm md:text-lg text-gray-700 mb-1 md:mb-2 text-center font-semibold">
@@ -290,10 +287,7 @@ export default function QuizDemo() {
                 href="/#pagamento"
                 className="w-full bg-green-600 hover:bg-green-700 text-white font-bold text-base md:text-lg py-3 md:py-4 rounded-xl transition-colors shadow-lg flex items-center justify-center gap-2"
               >
-                <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-                <span className="leading-tight">Quero Garantir Minha Aprovação Agora!</span>
+                <span className="leading-tight">Eu quero</span>
               </a>
             </div>
 
@@ -318,9 +312,8 @@ export default function QuizDemo() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="bg-white rounded-xl p-4 mb-6 shadow-md">
-          <div className="flex justify-between items-center mb-2">
+          <div className="mb-2">
             <span className="text-sm font-semibold text-gray-600">Questão {currentQuestion + 1} de {questions.length}</span>
-            <span className="text-sm font-semibold text-primary">{question.theme}</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div className="bg-primary h-2 rounded-full transition-all" style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}></div>
@@ -329,13 +322,27 @@ export default function QuizDemo() {
 
         {/* Questão */}
         <div className="bg-white rounded-xl p-6 md:p-8 shadow-lg mb-6">
-          <div className="mb-4">
-            <span className="inline-block bg-secondary/20 text-secondary px-3 py-1 rounded-full text-sm font-medium mb-3">
-              {question.subtheme}
-            </span>
+          {/* Tema */}
+          <div className="text-center mb-4">
+            <p className="text-sm text-gray-600 mb-2">Tema</p>
+            <div className="inline-flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-lg">
+              <span className="text-2xl">📚</span>
+              <span className="font-semibold text-blue-900">{question.theme}</span>
+            </div>
           </div>
-          <div className="bg-blue-50 border-l-4 border-blue-500 rounded-r-lg p-4 mb-6">
-            <h2 className="text-lg md:text-xl font-bold text-gray-900">{question.question}</h2>
+
+          {/* Subtema */}
+          <div className="text-center mb-6">
+            <p className="text-sm text-gray-600 mb-2">Subtema</p>
+            <p className="font-semibold text-green-700">{question.subtheme}</p>
+          </div>
+
+          {/* Pergunta */}
+          <div className="mb-6">
+            <p className="text-sm text-gray-600 mb-3 text-center">Pergunta</p>
+            <div className="bg-blue-50 border-l-4 border-blue-500 rounded-r-lg p-4">
+              <p className="text-base md:text-lg text-gray-900">{question.question}</p>
+            </div>
           </div>
 
           {/* Opções */}
@@ -345,15 +352,21 @@ export default function QuizDemo() {
               const isCorrect = option.letter === question.correctAnswer;
               const showResult = currentAnswer !== undefined;
 
-              let bgColor = 'bg-gray-50 hover:bg-gray-100 border-gray-200';
+              let bgColor = 'bg-white hover:bg-gray-50 border-gray-300';
+              let letterBg = 'bg-gray-100';
+              let letterColor = 'text-gray-700';
               let animation = '';
               
               if (showResult) {
                 if (isCorrect) {
-                  bgColor = 'bg-green-100 border-green-500 shadow-lg shadow-green-200';
+                  bgColor = 'bg-white border-green-500';
+                  letterBg = 'bg-green-500';
+                  letterColor = 'text-white';
                   animation = 'animate-pulse-once';
                 } else if (isSelected) {
-                  bgColor = 'bg-red-100 border-red-500 shadow-lg shadow-red-200';
+                  bgColor = 'bg-white border-red-500';
+                  letterBg = 'bg-red-500';
+                  letterColor = 'text-white';
                   animation = 'animate-shake';
                 }
               }
@@ -363,22 +376,22 @@ export default function QuizDemo() {
                   key={option.letter}
                   onClick={() => handleSelectAnswer(option.letter)}
                   disabled={currentAnswer !== undefined}
-                  className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 ${bgColor} ${animation} ${currentAnswer ? 'cursor-not-allowed' : 'cursor-pointer hover:scale-[1.02] hover:shadow-md'}`}
+                  className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-300 ${bgColor} ${animation} ${currentAnswer ? 'cursor-not-allowed' : 'cursor-pointer hover:shadow-md'}`}
                 >
-                  <div className="flex items-start gap-3">
-                    <span className={`font-bold text-lg flex-shrink-0 ${showResult && isCorrect ? 'text-green-700' : showResult && isSelected ? 'text-red-700' : ''}`}>
-                      {option.letter})
+                  <div className="flex items-start gap-4">
+                    <span className={`${letterBg} ${letterColor} w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0`}>
+                      {option.letter}
                     </span>
-                    <span className={`${showResult && isCorrect ? 'text-green-900 font-medium' : showResult && isSelected ? 'text-red-900' : 'text-gray-800'}`}>
+                    <span className={`flex-1 pt-2 ${showResult && isCorrect ? 'text-gray-900 font-medium' : 'text-gray-800'}`}>
                       {option.text}
                     </span>
                     {showResult && isCorrect && (
-                      <svg className="w-6 h-6 text-green-600 ml-auto flex-shrink-0 animate-bounce-once" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-2 animate-bounce-once" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     )}
                     {showResult && isSelected && !isCorrect && (
-                      <svg className="w-6 h-6 text-red-600 ml-auto flex-shrink-0 animate-shake" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-red-600 flex-shrink-0 mt-2 animate-shake" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                       </svg>
                     )}
