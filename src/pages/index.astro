@@ -121,82 +121,21 @@ import PricingSection from '../components/islands/PricingSection';
       <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
           <video 
-            data-lazy-video
+            autoplay
             loop 
             muted 
             playsinline
-            preload="metadata"
+            preload="auto"
             width="1280"
             height="720"
             class="w-full h-auto"
             poster="/favicon.webp"
           >
-            <source data-src="/Antes e depois do simulado PedagoMais.mp4" type="video/mp4" />
+            <source src="/Antes e depois do simulado PedagoMais.mp4" type="video/mp4" />
             Seu navegador não suporta vídeos HTML5.
           </video>
         </div>
       </div>
-
-      <script>
-        // Lazy load video with Intersection Observer - iOS compatible
-        if ('IntersectionObserver' in window) {
-          const videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                const video = entry.target as HTMLVideoElement;
-                const source = video.querySelector('source[data-src]') as HTMLSourceElement;
-                
-                if (source && source.dataset.src) {
-                  source.src = source.dataset.src;
-                  video.load();
-                  
-                  // iOS Safari precisa de interação do usuário ou evento específico
-                  // Tentamos autoplay, mas se falhar, o vídeo ainda carrega
-                  const playPromise = video.play();
-                  
-                  if (playPromise !== undefined) {
-                    playPromise.catch(() => {
-                      // Autoplay bloqueado - comum no iOS
-                      // Vídeo carregado mas não inicia automaticamente
-                      console.log('Autoplay bloqueado, vídeo carregado');
-                    });
-                  }
-                  
-                  videoObserver.unobserve(video);
-                }
-              }
-            });
-          }, {
-            rootMargin: '100px', // Aumentado para iOS
-            threshold: 0.1
-          });
-
-          const lazyVideo = document.querySelector('[data-lazy-video]');
-          if (lazyVideo) {
-            videoObserver.observe(lazyVideo);
-          }
-        } else {
-          // Fallback para navegadores sem Intersection Observer
-          const video = document.querySelector('[data-lazy-video]') as HTMLVideoElement;
-          const source = video?.querySelector('source[data-src]') as HTMLSourceElement;
-          if (source && source.dataset.src) {
-            source.src = source.dataset.src;
-            video.load();
-          }
-        }
-
-        // Touch handler para iOS - inicia vídeo ao tocar
-        document.addEventListener('DOMContentLoaded', () => {
-          const video = document.querySelector('[data-lazy-video]') as HTMLVideoElement;
-          if (video && /iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-            video.addEventListener('click', () => {
-              if (video.paused) {
-                video.play();
-              }
-            });
-          }
-        });
-      </script>
     </div>
   </section>
 
