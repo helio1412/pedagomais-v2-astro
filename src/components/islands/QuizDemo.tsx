@@ -29,7 +29,7 @@ const questions: Question[] = [
       { letter: 'D', text: 'Construção de esquemas sensório-motores através da interação com objetos' }
     ],
     correctAnswer: 'C',
-    explanation: "A resposta correta é a letra C porque nesta fase (2 a 7 anos) a criança começa a usar símbolos para representar coisas, como quando faz de conta que uma caixa é um carro. Ela também é muito egocêntrica, ou seja, tem dificuldade de entender o ponto de vista dos outros e acha que todo mundo pensa igual a ela."
+    explanation: "Nesta fase (2 a 7 anos) a criança começa a usar símbolos para representar coisas, como quando faz de conta que uma caixa é um carro. Ela também é muito egocêntrica, ou seja, tem dificuldade de entender o ponto de vista dos outros e acha que todo mundo pensa igual a ela."
   },
   {
     id: 2,
@@ -43,7 +43,7 @@ const questions: Question[] = [
       { letter: 'D', text: 'Relatório burocrático exigido por lei para prestação de contas aos órgãos fiscalizadores' }
     ],
     correctAnswer: 'B',
-    explanation: "A resposta correta é a letra B porque o PPP deve ser feito por todos que fazem parte da escola: diretores, professores, funcionários, alunos e famílias. É um documento que mostra a identidade da escola, seus valores e objetivos. Não pode ser feito só pela direção, precisa da participação de toda a comunidade escolar."
+    explanation: "O PPP deve ser feito por todos que fazem parte da escola: diretores, professores, funcionários, alunos e famílias. É um documento que mostra a identidade da escola, seus valores e objetivos. Não pode ser feito só pela direção, precisa da participação de toda a comunidade escolar."
   },
   {
     id: 3,
@@ -57,7 +57,7 @@ const questions: Question[] = [
       { letter: 'D', text: 'Promover o desenvolvimento integral da criança em seus aspectos físico, psicológico, intelectual e social' }
     ],
     correctAnswer: 'D',
-    explanation: "A resposta correta é a letra D porque a LDB diz que a educação infantil deve desenvolver a criança de forma completa: o corpo (físico), as emoções (psicológico), o pensamento (intelectual) e o convívio com outras pessoas (social). O objetivo não é alfabetizar, mas ajudar a criança a crescer em todos esses aspectos."
+    explanation: "A LDB diz que a educação infantil deve desenvolver a criança de forma completa: o corpo (físico), as emoções (psicológico), o pensamento (intelectual) e o convívio com outras pessoas (social). O objetivo não é alfabetizar, mas ajudar a criança a crescer em todos esses aspectos."
   },
   {
     id: 4,
@@ -71,7 +71,7 @@ const questions: Question[] = [
       { letter: 'D', text: 'Escolanovista e espontaneísta, centrada nos interesses naturais e na liberdade individual do aluno' }
     ],
     correctAnswer: 'A',
-    explanation: "A resposta correta é a letra A porque Paulo Freire defende que a educação deve ser baseada no diálogo entre professor e aluno. Ele critica quando o professor só fala e o aluno só escuta. Para Freire, professor e aluno devem conversar, questionar e construir o conhecimento juntos, desenvolvendo o pensamento crítico para entender e transformar o mundo."
+    explanation: "Paulo Freire defende que a educação deve ser baseada no diálogo entre professor e aluno. Ele critica quando o professor só fala e o aluno só escuta. Para Freire, professor e aluno devem conversar, questionar e construir o conhecimento juntos, desenvolvendo o pensamento crítico para entender e transformar o mundo."
   },
   {
     id: 5,
@@ -85,7 +85,7 @@ const questions: Question[] = [
       { letter: 'D', text: 'Interagir, descobrir, construir, compartilhar, respeitar e aprender' }
     ],
     correctAnswer: 'B',
-    explanation: "A resposta correta é a letra B. A BNCC define seis direitos de aprendizagem e desenvolvimento para a educação infantil: Conviver (com outras crianças e adultos), Brincar (cotidianamente de diversas formas), Participar (ativamente das atividades), Explorar (movimentos, gestos, sons, formas, texturas), Expressar (sentimentos, necessidades, opiniões) e Conhecer-se (construir sua identidade). Esses direitos garantem que a criança seja protagonista do seu aprendizado e se desenvolva integralmente."
+    explanation: "A BNCC define seis direitos de aprendizagem e desenvolvimento para a educação infantil: Conviver (com outras crianças e adultos), Brincar (cotidianamente de diversas formas), Participar (ativamente das atividades), Explorar (movimentos, gestos, sons, formas, texturas), Expressar (sentimentos, necessidades, opiniões) e Conhecer-se (construir sua identidade). Esses direitos garantem que a criança seja protagonista do seu aprendizado e se desenvolva integralmente."
   }
 ];
 
@@ -232,6 +232,71 @@ export default function QuizDemo() {
 
             <p className="text-lg text-gray-700 mb-8">{getPerformanceMessage(score)}</p>
 
+            {/* CTA Box */}
+            <div className="bg-[#F5F2FE] border-2 border-green-500 rounded-2xl p-6 md:p-8 mb-8 text-left">
+              <div className="flex items-center gap-3 mb-4">
+                <svg className="w-8 h-8 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                </svg>
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900">🎯 Quer Garantir Sua Aprovação?</h3>
+              </div>
+              
+              <p className="text-base md:text-lg text-gray-700 mb-2 text-center font-semibold">
+                Esta foi apenas uma pequena amostra!
+              </p>
+              <p className="text-base text-gray-600 mb-6 text-center">
+                Imagine dominar <span className="font-bold text-primary">TODOS os conteúdos</span> que caem nas provas e conquistar sua vaga dos sonhos:
+              </p>
+
+              <div className="space-y-4 mb-6">
+                <div className="flex items-start gap-3">
+                  <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                  </svg>
+                  <div>
+                    <p className="font-bold text-gray-900">✨ Mais de 800 Questões Comentadas</p>
+                    <p className="text-sm text-gray-600">Treine com questões reais de concursos e aprenda com explicações detalhadas que vão direto ao ponto</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                  </svg>
+                  <div>
+                    <p className="font-bold text-gray-900">🧠 Mapas Mentais que Facilitam TUDO</p>
+                    <p className="text-sm text-gray-600">Memorize os conteúdos mais complexos em minutos com nossos mapas visuais exclusivos</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                  </svg>
+                  <div>
+                    <p className="font-bold text-gray-900">🏆 Certificado Assim que se Inscrever</p>
+                    <p className="text-sm text-gray-600">Receba seu certificado imediatamente e turbine seu currículo para se destacar nos processos seletivos</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-4 rounded-r-lg">
+                <p className="text-sm font-semibold text-gray-800">
+                  ⚡ <span className="text-yellow-700">Milhares de aprovados</span> já usaram o PedagoMais para conquistar suas vagas!
+                </p>
+              </div>
+
+              <a
+                href="/#pagamento"
+                className="w-full bg-green-600 hover:bg-green-700 text-white font-bold text-lg py-4 rounded-xl transition-colors shadow-lg flex items-center justify-center gap-2"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                Quero Garantir Minha Aprovação Agora!
+              </a>
+            </div>
+
             <a
               href="/"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary text-white font-bold px-8 py-4 rounded-xl hover:opacity-90 transition-opacity"
@@ -269,7 +334,9 @@ export default function QuizDemo() {
               {question.subtheme}
             </span>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-6">{question.question}</h2>
+          <div className="bg-blue-50 border-l-4 border-blue-500 rounded-r-lg p-4 mb-6">
+            <h2 className="text-lg md:text-xl font-bold text-gray-900">{question.question}</h2>
+          </div>
 
           {/* Opções */}
           <div className="space-y-3">
