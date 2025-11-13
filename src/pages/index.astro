@@ -121,21 +121,58 @@ import PricingSection from '../components/islands/PricingSection';
       <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
           <video 
-            autoplay 
+            data-lazy-video
             loop 
             muted 
             playsinline
-            loading="lazy"
             width="1280"
             height="720"
             class="w-full h-auto"
             poster="/favicon.webp"
           >
-            <source src="/Antes e depois do simulado PedagoMais.mp4" type="video/mp4" />
+            <source data-src="/Antes e depois do simulado PedagoMais.mp4" type="video/mp4" />
             Seu navegador não suporta vídeos HTML5.
           </video>
         </div>
       </div>
+
+      <script>
+        // Lazy load video with Intersection Observer
+        if ('IntersectionObserver' in window) {
+          const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const video = entry.target as HTMLVideoElement;
+                const source = video.querySelector('source[data-src]') as HTMLSourceElement;
+                
+                if (source && source.dataset.src) {
+                  source.src = source.dataset.src;
+                  video.load();
+                  video.play().catch(() => {
+                    // Autoplay pode falhar em alguns navegadores
+                  });
+                  videoObserver.unobserve(video);
+                }
+              }
+            });
+          }, {
+            rootMargin: '50px'
+          });
+
+          const lazyVideo = document.querySelector('[data-lazy-video]');
+          if (lazyVideo) {
+            videoObserver.observe(lazyVideo);
+          }
+        } else {
+          // Fallback para navegadores sem Intersection Observer
+          const video = document.querySelector('[data-lazy-video]') as HTMLVideoElement;
+          const source = video?.querySelector('source[data-src]') as HTMLSourceElement;
+          if (source && source.dataset.src) {
+            source.src = source.dataset.src;
+            video.load();
+          }
+        }
+      </script>
     </div>
   </section>
 
