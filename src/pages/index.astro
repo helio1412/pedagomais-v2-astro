@@ -7,6 +7,7 @@ import StudyAreaSection from '../components/StudyAreaSection.astro';
 import CertificateSection from '../components/CertificateSection.astro';
 import FAQSection from '../components/islands/FAQSection';
 import PricingSection from '../components/islands/PricingSection';
+import SalesNotification from '../components/islands/SalesNotification';
 ---
 
 <Layout title="PedagoMais - Plataforma de Simulados de Pedagogia">
@@ -240,6 +241,9 @@ import PricingSection from '../components/islands/PricingSection';
       </div>
     </div>
   </footer>
+
+  <!-- Notificações de vendas - Carrega apenas quando navegador estiver ocioso -->
+  <SalesNotification client:idle />
 </Layout>
 
 <script>
