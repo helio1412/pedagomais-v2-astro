@@ -151,7 +151,8 @@ import PricingSection from '../components/islands/PricingSection';
       </p>
       <a
         href="/#pagamento"
-        class="inline-flex items-center gap-2 bg-white text-primary font-bold text-lg px-8 py-4 rounded-xl hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:scale-105"
+        class="inline-flex items-center gap-2 bg-white text-primary font-bold text-lg px-8 py-4 rounded-xl hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:scale-105 delayed-cta opacity-0 pointer-events-none transition-opacity duration-500"
+        data-delay-cta
       >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -240,3 +241,17 @@ import PricingSection from '../components/islands/PricingSection';
     </div>
   </footer>
 </Layout>
+
+<script>
+  // Delay de 1 minuto (60000ms) para mostrar os botões CTA
+  const DELAY_TIME = 60000; // 60 segundos
+
+  // Aguarda 1 minuto e então mostra todos os botões com delay
+  setTimeout(() => {
+    const delayedButtons = document.querySelectorAll('[data-delay-cta]');
+    delayedButtons.forEach(button => {
+      button.classList.remove('opacity-0', 'pointer-events-none');
+      button.classList.add('opacity-100');
+    });
+  }, DELAY_TIME);
+</script>
