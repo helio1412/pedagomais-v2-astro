@@ -103,3 +103,37 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
     </div>
   </main>
 </Layout>
+
+<script>
+  // Captura UTMs da URL atual e propaga para o botão "Ir para o Site"
+  document.addEventListener('DOMContentLoaded', () => {
+    const mainPageButton = document.querySelector('a[href*="pedagomais.net.br"]') as HTMLAnchorElement;
+    
+    if (mainPageButton) {
+      // Pega os parâmetros da URL atual
+      const currentParams = new URLSearchParams(window.location.search);
+      
+      // Cria nova URL base
+      const targetUrl = new URL(mainPageButton.href);
+      
+      // Lista de parâmetros UTM para propagar
+      const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+      
+      // Adiciona UTMs da URL atual (se existirem)
+      utmParams.forEach(param => {
+        const value = currentParams.get(param);
+        if (value) {
+          targetUrl.searchParams.set(param, value);
+        }
+      });
+      
+      // Se não tem utm_source, mantém o padrão "instagram"
+      if (!targetUrl.searchParams.has('utm_source')) {
+        targetUrl.searchParams.set('utm_source', 'instagram');
+      }
+      
+      // Atualiza o href do botão
+      mainPageButton.href = targetUrl.toString();
+    }
+  });
+</script>
