@@ -38,7 +38,7 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
       <div class="space-y-4">
         {/* Main Page Button */}
         <a
-          href="https://pedagomais.net.br/?utm_source=instagram"
+          href="https://pedagomais.net.br/?utm_source=instagram_bio&utm_medium=organic"
           class="block w-full bg-white hover:bg-neutral-beige text-primary font-semibold py-4 px-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95"
         >
           <div class="flex items-center justify-center gap-3">
@@ -116,21 +116,15 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
       // Cria nova URL base
       const targetUrl = new URL(mainPageButton.href);
       
-      // Lista de parâmetros UTM para propagar
-      const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
-      
-      // Adiciona UTMs da URL atual (se existirem)
-      utmParams.forEach(param => {
-        const value = currentParams.get(param);
-        if (value) {
-          targetUrl.searchParams.set(param, value);
-        }
-      });
-      
-      // Se não tem utm_source, mantém o padrão "instagram"
-      if (!targetUrl.searchParams.has('utm_source')) {
-        targetUrl.searchParams.set('utm_source', 'instagram');
+      // Propaga apenas fbclid se existir (para rastreamento do Facebook)
+      const fbclid = currentParams.get('fbclid');
+      if (fbclid) {
+        targetUrl.searchParams.set('fbclid', fbclid);
       }
+      
+      // Força UTMs da bio do Instagram (sempre)
+      targetUrl.searchParams.set('utm_source', 'instagram_bio');
+      targetUrl.searchParams.set('utm_medium', 'organic');
       
       // Atualiza o href do botão
       mainPageButton.href = targetUrl.toString();
