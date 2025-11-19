@@ -21,7 +21,7 @@ const questions: Question[] = [
     id: 1,
     theme: "Psicologia da Educação",
     subtheme: "Concepções de Aprendizagem Tradicional e Behaviorista (tábula rasa)",
-    question: "São pensadores da educação que concebem o aluno como tábula rasa:",
+    question: "Quais autores clássicos da educação consideram o aluno como alguém passivo, visto como tábula rasa?",
     options: [
       { letter: 'A', text: 'Rogers, Freinet e Skinner' },
       { letter: 'B', text: 'Piaget, Durkheim e Vygotsky' },
