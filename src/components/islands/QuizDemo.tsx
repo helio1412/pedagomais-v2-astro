@@ -20,16 +20,16 @@ const questions: Question[] = [
   {
     id: 1,
     theme: "Psicologia da Educação",
-    subtheme: "Piaget - Estágio pré-operatório",
-    question: "Segundo Piaget, o estágio pré-operatório (2 a 7 anos) é caracterizado principalmente por qual aspecto do desenvolvimento cognitivo infantil?",
+    subtheme: "Concepções de Aprendizagem Tradicional e Behaviorista (tábula rasa)",
+    question: "São pensadores da educação que concebem o aluno como tábula rasa:",
     options: [
-      { letter: 'A', text: 'Domínio do raciocínio hipotético-dedutivo e pensamento abstrato sistemático' },
-      { letter: 'B', text: 'Capacidade de realizar operações mentais reversíveis e conservação de quantidades' },
-      { letter: 'C', text: 'Desenvolvimento do pensamento simbólico e presença de egocentrismo cognitivo' },
-      { letter: 'D', text: 'Construção de esquemas sensório-motores através da interação com objetos' }
+      { letter: 'A', text: 'Rogers, Freinet e Skinner' },
+      { letter: 'B', text: 'Piaget, Durkheim e Vygotsky' },
+      { letter: 'C', text: 'Skinner, Durkheim e Herbart' },
+      { letter: 'D', text: 'Freire, Lourenço Filho e Durkheim' }
     ],
     correctAnswer: 'C',
-    explanation: "Nesta fase (2 a 7 anos) a criança começa a usar símbolos para representar coisas, como quando faz de conta que uma caixa é um carro. Ela também é muito egocêntrica, ou seja, tem dificuldade de entender o ponto de vista dos outros e acha que todo mundo pensa igual a ela."
+    explanation: "Esses autores veem o aluno como alguém passivo, que aprende recebendo conteúdos prontos do professor ou do ambiente. Essa visão entende o estudante como tábula rasa, ou seja, alguém que deve ser moldado pela educação. São autores ligados à pedagogia tradicional ou ao behaviorismo, ambos de caráter transmissivo"
   },
   {
     id: 2,
