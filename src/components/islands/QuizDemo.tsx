@@ -40,7 +40,7 @@ const questions: Question[] = [
       { letter: 'A', text: 'Documento elaborado exclusivamente pela equipe gestora para definir metas administrativas e financeiras' },
       { letter: 'B', text: 'Instrumento de construção coletiva que expressa a identidade, os valores e os objetivos da comunidade escolar' },
       { letter: 'C', text: 'Planejamento anual de conteúdos curriculares obrigatórios definidos pela Secretaria de Educação' },
-      { letter: 'D', text: 'Relatório burocrático exigido por lei para prestação de contas aos órgãos fiscalizadores' }
+      { letter: 'D', text: 'Relatório burocrático exigido por lei para prestação de contas aos órgãos fiscalizadores.' }
     ],
     correctAnswer: 'B',
     explanation: "O PPP deve ser feito por todos que fazem parte da escola: diretores, professores, funcionários, alunos e famílias. É um documento que mostra a identidade da escola, seus valores e objetivos. Não pode ser feito só pela direção, precisa da participação de toda a comunidade escolar."
