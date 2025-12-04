@@ -73,7 +73,7 @@ export default function PricingSection() {
                   </div>
                 </div>
                 <p className="text-xs md:text-sm text-center text-orange-700 font-medium">
-                  Após esse horário, o preço volta para R$ 127,00
+                  Após esse horário, o preço volta para R$ 97,00
                 </p>
               </div>
             </div>
@@ -99,11 +99,11 @@ export default function PricingSection() {
             <div className="text-center mb-8">
               <p className="text-neutral-dark/60 text-lg mb-2">De:</p>
               <p className="text-2xl text-neutral-dark/50 line-through mb-4">
-                R$ 127,00
+                R$ 97,00
               </p>
               <p className="text-neutral-dark/60 text-lg mb-2">Por apenas:</p>
               <p className="text-5xl md:text-6xl font-bold text-primary mb-2">
-                R$ 47,00
+                R$ 37,00
               </p>
               <p className="text-lg text-secondary font-semibold">
                 Pagamento único - Acesso vitalício
