@@ -26,8 +26,8 @@ const faqs = [
     answer: 'Sim! Você receberá um certificado digital de conclusão que comprova suas horas de estudo. É um diferencial importante para seu currículo e pode ser usado em processos seletivos e concursos públicos.',
   },
   {
-    question: 'Por quanto tempo tenho acesso?',
-    answer: 'Seu acesso é VITALÍCIO! Você paga apenas uma vez e pode usar a plataforma para sempre, incluindo todas as atualizações futuras.',
+    question: 'Pago somente uma vez?',
+    answer: 'Sim! Você paga apenas uma vez e tem acesso VITALÍCIO à plataforma. Sem mensalidades, sem taxas escondidas. Um único pagamento e você pode usar para sempre, incluindo todas as atualizações futuras.',
   },
   {
     question: 'Posso parcelar o pagamento?',
