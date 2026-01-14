@@ -47,10 +47,10 @@ export default function VideoPlayer({ videoId, accountId }: VideoPlayerProps) {
   }, [isVisible, videoId, accountId, isLoaded]);
 
   return (
-    <div ref={containerRef} className="relative rounded-2xl overflow-hidden shadow-2xl">
+    <div ref={containerRef} className="relative rounded-2xl overflow-hidden shadow-2xl mx-auto" style={{ maxWidth: '400px', width: '100%' }}>
       {!isLoaded && (
-        <div className="aspect-video bg-neutral-dark/10 animate-pulse flex items-center justify-center">
-          <div className="text-center">
+        <div style={{ paddingTop: '138.89%' }} className="bg-neutral-dark/10 animate-pulse flex items-center justify-center relative">
+          <div className="text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <div className="inline-block w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mb-2"></div>
             <p className="text-sm text-gray-600">Carregando vídeo...</p>
           </div>
@@ -60,7 +60,7 @@ export default function VideoPlayer({ videoId, accountId }: VideoPlayerProps) {
         id={`vid_${videoId}`}
         style={{ 
           position: 'relative', 
-          paddingTop: '56.25%',
+          paddingTop: '138.89%',
           display: isLoaded ? 'block' : 'none'
         }}
       />
