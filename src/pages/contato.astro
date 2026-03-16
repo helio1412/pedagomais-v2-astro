@@ -56,6 +56,25 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
           </div>
         </a>
 
+        {/* Login Button */}
+        <a
+          href="https://pedago-mais.vercel.app/login"
+          class="block w-full bg-accent-cyan hover:bg-accent-cyan/90 text-white font-semibold py-4 px-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95"
+        >
+          <div class="flex items-center justify-center gap-3">
+            <svg 
+              class="w-6 h-6" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+            </svg>
+            <span class="text-lg">Fazer login</span>
+          </div>
+        </a>
+
         {/* WhatsApp Button */}
         <a
           href={whatsappUrl}
