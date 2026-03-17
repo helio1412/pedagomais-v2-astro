@@ -19,17 +19,17 @@ interface UserAnswer {
 const questions: Question[] = [
   {
     id: 1,
-    theme: "Psicologia da Educação",
-    subtheme: "Concepções de Aprendizagem Tradicional e Behaviorista (tábula rasa)",
-    question: "Quais autores clássicos da educação consideram o aluno como alguém passivo, visto como tábula rasa?",
+    theme: "Língua Portuguesa",
+    subtheme: "Práticas Pedagógicas de Letramento",
+    question: "A oralidade é um eixo estruturante do ensino de Língua Portuguesa na BNCC. Considerando o letramento como prática social o ensino da oralidade na escola deve voltar-se prioritariamente para:",
     options: [
-      { letter: 'A', text: 'Rogers, Freinet e Skinner' },
-      { letter: 'B', text: 'Piaget, Durkheim e Vygotsky' },
-      { letter: 'C', text: 'Skinner, Durkheim e Herbart' },
-      { letter: 'D', text: 'Freire, Lourenço Filho e Durkheim' }
+      { letter: 'A', text: 'O desenvolvimento progressivo dos gêneros orais públicos e formais, como debates e seminários, capacitando o aluno a refletir sobre as condições de produção e a adequar o registro aos múltiplos contextos.' },
+      { letter: 'B', text: 'A valorização irrestrita das interações orais espontâneas no cotidiano escolar, focando primariamente na desconstrução do preconceito linguístico através da aceitação incondicional e exclusiva das variantes coloquiais trazidas pelo estudante.' },
+      { letter: 'C', text: 'A transposição didática das regras gramaticais normativas para as práticas de fala diárias, garantindo que o estudante utilize a norma-padrão como principal ferramenta de comunicação efetiva nos ambientes intra e extraescolares.' },
+      { letter: 'D', text: 'O aprimoramento da decodificação fonológica e da fluência leitora através da leitura expressiva em voz alta, estabelecendo a base cognitiva necessária para a posterior compreensão sociocognitiva e crítica dos textos lidos.' }
     ],
-    correctAnswer: 'C',
-    explanation: "Esses autores veem o aluno como alguém passivo, que aprende recebendo conteúdos prontos do professor ou do ambiente. Essa visão entende o estudante como tábula rasa, ou seja, alguém que deve ser moldado pela educação. São autores ligados à pedagogia tradicional ou ao behaviorismo, ambos de caráter transmissivo"
+    correctAnswer: 'A',
+    explanation: "Segundo a BNCC, o eixo da oralidade não se restringe à conversação espontânea (oralidade primária). O papel da escola no letramento é sistematizar a 'oralidade secundária' (gêneros orais públicos). O foco central é ensinar as condições de produção e a adequação do registro linguístico aos diferentes contextos formais. As alternativas incorretas utilizam jargões reais (fluência leitora, preconceito linguístico, transposição didática), mas distorcem o objetivo do eixo, focando em extremismos estruturais, exclusividade da norma-padrão ou reduzindo a oralidade à mera leitura mecânica em voz alta."
   },
   {
     id: 2,
@@ -37,13 +37,13 @@ const questions: Question[] = [
     subtheme: "Planejamento e Organização Escolar",
     question: "O Projeto Político-Pedagógico (PPP) é um documento fundamental para a gestão democrática da escola. Segundo a LDB 9394/96, qual é a principal característica que define o PPP?",
     options: [
-      { letter: 'A', text: 'Documento elaborado exclusivamente pela equipe gestora para definir metas administrativas e financeiras' },
-      { letter: 'B', text: 'Instrumento de construção coletiva que expressa a identidade, os valores e os objetivos da comunidade escolar' },
-      { letter: 'C', text: 'Planejamento anual de conteúdos curriculares obrigatórios definidos pela Secretaria de Educação' },
-      { letter: 'D', text: 'Relatório burocrático exigido por lei para prestação de contas aos órgãos fiscalizadores.' }
+      { letter: 'A', text: 'Documento normativo elaborado de forma exclusiva pela equipe gestora, visando estabelecer rígidas metas administrativas e financeiras.' },
+      { letter: 'B', text: 'Instrumento de elaboração coletiva que consolida a identidade, os valores socioculturais e os propósitos de toda comunidade escolar.' },
+      { letter: 'C', text: 'Planejamento estrutural contendo apenas os conteúdos curriculares obrigatórios pré-definidos pelos órgãos da Secretaria de Educação.' },
+      { letter: 'D', text: 'Relatório técnico burocrático de caráter fiscal, exigido legalmente para garantir a correta prestação de contas aos governos federais.' }
     ],
     correctAnswer: 'B',
-    explanation: "O PPP deve ser feito por todos que fazem parte da escola: diretores, professores, funcionários, alunos e famílias. É um documento que mostra a identidade da escola, seus valores e objetivos. Não pode ser feito só pela direção, precisa da participação de toda a comunidade escolar."
+    explanation: "O PPP fundamenta a gestão democrática (Art. 14 da LDB), exigindo forte participação dos profissionais da educação e da comunidade na sua construção. Ele atua como o 'mapa' identitário e diretivo da escola, extrapolando o mero cumprimento burocrático, financeiro ou normativo."
   },
   {
     id: 3,
@@ -51,13 +51,13 @@ const questions: Question[] = [
     subtheme: "LDB - Educação infantil",
     question: "De acordo com a LDB 9394/96, qual é a finalidade principal da educação infantil, primeira etapa da educação básica?",
     options: [
-      { letter: 'A', text: 'Garantir a alfabetização e o letramento como preparação obrigatória para o ensino fundamental' },
-      { letter: 'B', text: 'Oferecer cuidados assistenciais complementando a função social da família na comunidade' },
-      { letter: 'C', text: 'Desenvolver competências cognitivas específicas alinhadas aos componentes curriculares da BNCC' },
-      { letter: 'D', text: 'Promover o desenvolvimento integral da criança em seus aspectos físico, psicológico, intelectual e social' }
+      { letter: 'A', text: 'Garantir a alfabetização inicial e o letramento como uma fase de preparação obrigatória e excludente para o ensino fundamental.' },
+      { letter: 'B', text: 'Fornecer cuidados estritamente assistenciais, com o objetivo de suprir e substituir integralmente a função social da família nuclear.' },
+      { letter: 'C', text: 'Desenvolver as competências cognitivas pontuais, mantendo o foco exclusivo nos componentes curriculares padronizados nacionalmente.' },
+      { letter: 'D', text: 'Promover o desenvolvimento integral da criança até os cinco anos de idade, abrangendo aspectos físicos, psicológicos, intelectuais e sociais.' }
     ],
     correctAnswer: 'D',
-    explanation: "A LDB diz que a educação infantil deve desenvolver a criança de forma completa: o corpo (físico), as emoções (psicológico), o pensamento (intelectual) e o convívio com outras pessoas (social). O objetivo não é alfabetizar, mas ajudar a criança a crescer em todos esses aspectos."
+    explanation: "Segundo o Art. 29 da LDB, a Educação Infantil tem como finalidade primordial o desenvolvimento integral da criança de até 5 (cinco) anos de idade. Ela não possui caráter essencialmente preparatório ou propedêutico para o ensino fundamental, tampouco possui função puramente assistencialista."
   },
   {
     id: 4,
@@ -65,13 +65,13 @@ const questions: Question[] = [
     subtheme: "Paulo Freire - Pedagogia crítica",
     question: "Paulo Freire, em sua obra 'Pedagogia do Oprimido', critica a concepção bancária de educação e propõe uma educação:",
     options: [
-      { letter: 'A', text: 'Problematizadora e dialógica, que desenvolve a consciência crítica e a autonomia dos educandos' },
-      { letter: 'B', text: 'Tecnicista e pragmática, voltada para o desenvolvimento de competências profissionais específicas' },
-      { letter: 'C', text: 'Tradicional e conteudista, com ênfase na transmissão sistemática do conhecimento acumulado' },
-      { letter: 'D', text: 'Escolanovista e espontaneísta, centrada nos interesses naturais e na liberdade individual do aluno' }
+      { letter: 'A', text: 'Problematizadora e dialógica, voltada fundamentalmente para o desenvolvimento da consciência crítica e a total emancipação dos educandos.' },
+      { letter: 'B', text: 'Tecnicista e comportamentalista, cujo foco pragmático seja preparar a mão de obra especializada para o imediato mercado de trabalho.' },
+      { letter: 'C', text: 'Tradicional e conteudista, estruturada na preservação e na transmissão inquestionável do acervo intelectual acumulado pela humanidade.' },
+      { letter: 'D', text: 'Escolanovista e espontaneísta, baseada quase que unicamente na expressão livre dos interesses naturais e impulsos instintivos dos alunos.' }
     ],
     correctAnswer: 'A',
-    explanation: "Paulo Freire defende que a educação deve ser baseada no diálogo entre professor e aluno. Ele critica quando o professor só fala e o aluno só escuta. Para Freire, professor e aluno devem conversar, questionar e construir o conhecimento juntos, desenvolvendo o pensamento crítico para entender e transformar o mundo."
+    explanation: "Na criticada 'educação bancária', o aluno é mero depositário passivo de informações. Em contrapartida, Freire defende a pedagogia problematizadora e libertadora, onde educador e educando aprendem juntos de forma mediada pelo mundo, visando o despertar crítico e a autonomia cidadã."
   },
   {
     id: 5,
@@ -79,13 +79,13 @@ const questions: Question[] = [
     subtheme: "BNCC - Direitos de aprendizagem",
     question: "A BNCC estabelece seis direitos de aprendizagem para a educação infantil que devem ser assegurados nas práticas pedagógicas. Considerando a intencionalidade educativa e a centralidade da criança no processo, qual alternativa apresenta corretamente esses direitos?",
     options: [
-      { letter: 'A', text: 'Alfabetizar, letrar, calcular, socializar, criar e experimentar' },
-      { letter: 'B', text: 'Conviver, brincar, participar, explorar, expressar e conhecer-se' },
-      { letter: 'C', text: 'Observar, questionar, investigar, registrar, comunicar e avaliar' },
-      { letter: 'D', text: 'Interagir, descobrir, construir, compartilhar, respeitar e aprender' }
+      { letter: 'A', text: 'Alfabetizar, letrar, calcular, socializar, criar e experimentar de maneira contínua e supervisionada dentro da rotina acadêmica.' },
+      { letter: 'B', text: 'Conviver, brincar, participar, explorar, expressar e conhecer-se, assegurando um desenvolvimento integral dinâmico e ativo.' },
+      { letter: 'C', text: 'Observar, questionar, investigar, registrar, comunicar e avaliar, com foco restrito na evolução das habilidades puramente cognitivas.' },
+      { letter: 'D', text: 'Interagir, descobrir, construir, compartilhar, respeitar e aprender, priorizando a preparação disciplinar e o nivelamento precoce.' }
     ],
     correctAnswer: 'B',
-    explanation: "A BNCC define seis direitos de aprendizagem e desenvolvimento para a educação infantil: Conviver (com outras crianças e adultos), Brincar (cotidianamente de diversas formas), Participar (ativamente das atividades), Explorar (movimentos, gestos, sons, formas, texturas), Expressar (sentimentos, necessidades, opiniões) e Conhecer-se (construir sua identidade). Esses direitos garantem que a criança seja protagonista do seu aprendizado e se desenvolva integralmente."
+    explanation: "A Base Nacional Comum Curricular (BNCC) estipula taxativamente seis direitos de aprendizagem essenciais: Conviver, brincar, participar, explorar, expressar e conhecer-se. Esses verbos garantem que a criança seja protagonista e o centro prático e lúdico do seu processo educativo inicial."
   }
 ];
 
