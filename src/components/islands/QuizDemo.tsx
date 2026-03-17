@@ -308,10 +308,10 @@ export default function QuizDemo() {
   const currentAnswer = getCurrentAnswer();
 
   return (
-    <div className="min-h-screen bg-[#F5F5DC] py-8 px-4">
-      <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <div className="bg-white rounded-xl p-4 mb-6 shadow-md">
+    <div className="min-h-screen bg-[#F5F5DC]">
+      {/* Header Fixo */}
+      <div className="fixed top-0 left-0 right-0 bg-white p-4 shadow-md z-50">
+        <div className="max-w-4xl mx-auto">
           <div className="mb-2">
             <span className="text-sm font-semibold text-gray-600">Questão {currentQuestion + 1} de {questions.length}</span>
           </div>
@@ -319,7 +319,10 @@ export default function QuizDemo() {
             <div className="bg-primary h-2 rounded-full transition-all" style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}></div>
           </div>
         </div>
+      </div>
 
+      {/* Conteúdo com padding-top para compensar o header fixo */}
+      <div className="max-w-4xl mx-auto px-4 pt-24 pb-8">
         {/* Questão */}
         <div className="mb-6">
           {/* Tema */}
