@@ -321,7 +321,7 @@ export default function QuizDemo() {
         </div>
 
         {/* Questão */}
-        <div className="bg-white rounded-xl p-6 md:p-8 shadow-lg mb-6">
+        <div className="mb-6">
           {/* Tema */}
           <div className="text-center mb-4">
             <p className="text-sm text-gray-600 mb-2">Tema</p>
