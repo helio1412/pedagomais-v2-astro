@@ -301,7 +301,7 @@ export default function QuizDemo() {
               </div>
 
               <a
-                href="/#pagamento"
+                href="/"
                 className="block w-full bg-green-600 hover:bg-green-700 text-white text-center font-bold text-lg py-4 rounded-xl transition-colors shadow-lg"
               >
                 Eu quero
