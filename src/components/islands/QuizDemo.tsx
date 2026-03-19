@@ -1,14 +1,5 @@
 import { useState, useEffect } from 'react';
-
-interface Question {
-  id: number;
-  theme: string;
-  subtheme: string;
-  question: string;
-  options: { letter: string; text: string }[];
-  correctAnswer: string;
-  explanation: string;
-}
+import { questionsByTheme, themes, type ThemeName } from './quizData';
 
 interface UserAnswer {
   questionId: number;
@@ -16,127 +7,107 @@ interface UserAnswer {
   isCorrect: boolean;
 }
 
-const questions: Question[] = [
-  {
-    id: 1,
-    theme: "Língua Portuguesa",
-    subtheme: "Práticas Pedagógicas de Letramento",
-    question: "A oralidade é um eixo estruturante do ensino de Língua Portuguesa na BNCC. Considerando o letramento como prática social o ensino da oralidade na escola deve voltar-se prioritariamente para:",
-    options: [
-      { letter: 'A', text: 'O desenvolvimento progressivo dos gêneros orais públicos e formais, como debates e seminários, capacitando o aluno a refletir sobre as condições de produção e a adequar o registro aos múltiplos contextos.' },
-      { letter: 'B', text: 'A valorização irrestrita das interações orais espontâneas no cotidiano escolar, focando primariamente na desconstrução do preconceito linguístico através da aceitação incondicional e exclusiva das variantes coloquiais trazidas pelo estudante.' },
-      { letter: 'C', text: 'A transposição didática das regras gramaticais normativas para as práticas de fala diárias, garantindo que o estudante utilize a norma-padrão como principal ferramenta de comunicação efetiva nos ambientes intra e extraescolares.' },
-      { letter: 'D', text: 'O aprimoramento da decodificação fonológica e da fluência leitora através da leitura expressiva em voz alta, estabelecendo a base cognitiva necessária para a posterior compreensão sociocognitiva e crítica dos textos lidos.' }
-    ],
-    correctAnswer: 'A',
-    explanation: "Segundo a BNCC, o eixo da oralidade não se restringe à conversação espontânea (oralidade primária). O papel da escola no letramento é sistematizar a 'oralidade secundária' (gêneros orais públicos). O foco central é ensinar as condições de produção e a adequação do registro linguístico aos diferentes contextos formais. As alternativas incorretas utilizam jargões reais (fluência leitora, preconceito linguístico, transposição didática), mas distorcem o objetivo do eixo, focando em extremismos estruturais, exclusividade da norma-padrão ou reduzindo a oralidade à mera leitura mecânica em voz alta."
-  },
-  {
-    id: 2,
-    theme: "Didática e Prática Pedagógica",
-    subtheme: "Planejamento e Organização Escolar",
-    question: "O Projeto Político-Pedagógico (PPP) é um documento fundamental para a gestão democrática da escola. Segundo a LDB 9394/96, qual é a principal característica que define o PPP?",
-    options: [
-      { letter: 'A', text: 'Documento normativo elaborado de forma exclusiva pela equipe gestora, visando estabelecer rígidas metas administrativas e financeiras.' },
-      { letter: 'B', text: 'Instrumento de elaboração coletiva que consolida a identidade, os valores socioculturais e os propósitos de toda comunidade escolar.' },
-      { letter: 'C', text: 'Planejamento estrutural contendo apenas os conteúdos curriculares obrigatórios pré-definidos pelos órgãos da Secretaria de Educação.' },
-      { letter: 'D', text: 'Relatório técnico burocrático de caráter fiscal, exigido legalmente para garantir a correta prestação de contas aos governos federais.' }
-    ],
-    correctAnswer: 'B',
-    explanation: "O PPP fundamenta a gestão democrática (Art. 14 da LDB), exigindo forte participação dos profissionais da educação e da comunidade na sua construção. Ele atua como o 'mapa' identitário e diretivo da escola, extrapolando o mero cumprimento burocrático, financeiro ou normativo."
-  },
-  {
-    id: 3,
-    theme: "Legislação e Políticas Educacionais",
-    subtheme: "LDB - Educação infantil",
-    question: "De acordo com a LDB 9394/96, qual é a finalidade principal da educação infantil, primeira etapa da educação básica?",
-    options: [
-      { letter: 'A', text: 'Garantir a alfabetização inicial e o letramento como uma fase de preparação obrigatória e excludente para o ensino fundamental.' },
-      { letter: 'B', text: 'Fornecer cuidados estritamente assistenciais, com o objetivo de suprir e substituir integralmente a função social da família nuclear.' },
-      { letter: 'C', text: 'Desenvolver as competências cognitivas pontuais, mantendo o foco exclusivo nos componentes curriculares padronizados nacionalmente.' },
-      { letter: 'D', text: 'Promover o desenvolvimento integral da criança até os cinco anos de idade, abrangendo aspectos físicos, psicológicos, intelectuais e sociais.' }
-    ],
-    correctAnswer: 'D',
-    explanation: "Segundo o Art. 29 da LDB, a Educação Infantil tem como finalidade primordial o desenvolvimento integral da criança de até 5 (cinco) anos de idade. Ela não possui caráter essencialmente preparatório ou propedêutico para o ensino fundamental, tampouco possui função puramente assistencialista."
-  },
-  {
-    id: 4,
-    theme: "Fundamentos da Educação",
-    subtheme: "Paulo Freire - Pedagogia crítica",
-    question: "Paulo Freire, em sua obra 'Pedagogia do Oprimido', critica a concepção bancária de educação e propõe uma educação:",
-    options: [
-      { letter: 'A', text: 'Problematizadora e dialógica, voltada fundamentalmente para o desenvolvimento da consciência crítica e a total emancipação dos educandos.' },
-      { letter: 'B', text: 'Tecnicista e comportamentalista, cujo foco pragmático seja preparar a mão de obra especializada para o imediato mercado de trabalho.' },
-      { letter: 'C', text: 'Tradicional e conteudista, estruturada na preservação e na transmissão inquestionável do acervo intelectual acumulado pela humanidade.' },
-      { letter: 'D', text: 'Escolanovista e espontaneísta, baseada quase que unicamente na expressão livre dos interesses naturais e impulsos instintivos dos alunos.' }
-    ],
-    correctAnswer: 'A',
-    explanation: "Na criticada 'educação bancária', o aluno é mero depositário passivo de informações. Em contrapartida, Freire defende a pedagogia problematizadora e libertadora, onde educador e educando aprendem juntos de forma mediada pelo mundo, visando o despertar crítico e a autonomia cidadã."
-  },
-  {
-    id: 5,
-    theme: "Legislação e Políticas Educacionais",
-    subtheme: "BNCC - Direitos de aprendizagem",
-    question: "A BNCC estabelece seis direitos de aprendizagem para a educação infantil que devem ser assegurados nas práticas pedagógicas. Considerando a intencionalidade educativa e a centralidade da criança no processo, qual alternativa apresenta corretamente esses direitos?",
-    options: [
-      { letter: 'A', text: 'Alfabetizar, letrar, calcular, socializar, criar e experimentar de maneira contínua e supervisionada dentro da rotina acadêmica.' },
-      { letter: 'B', text: 'Conviver, brincar, participar, explorar, expressar e conhecer-se, assegurando um desenvolvimento integral dinâmico e ativo.' },
-      { letter: 'C', text: 'Observar, questionar, investigar, registrar, comunicar e avaliar, com foco restrito na evolução das habilidades puramente cognitivas.' },
-      { letter: 'D', text: 'Interagir, descobrir, construir, compartilhar, respeitar e aprender, priorizando a preparação disciplinar e o nivelamento precoce.' }
-    ],
-    correctAnswer: 'B',
-    explanation: "A Base Nacional Comum Curricular (BNCC) estipula taxativamente seis direitos de aprendizagem essenciais: Conviver, brincar, participar, explorar, expressar e conhecer-se. Esses verbos garantem que a criança seja protagonista e o centro prático e lúdico do seu processo educativo inicial."
-  }
-];
-
 export default function QuizDemo() {
-  const [currentScreen, setCurrentScreen] = useState<'welcome' | 'loading' | 'quiz' | 'results'>('welcome');
+  const [currentScreen, setCurrentScreen] = useState<'welcome' | 'loading' | 'themes' | 'quiz' | 'results'>('welcome');
+  const [selectedTheme, setSelectedTheme] = useState<ThemeName | null>(null);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
   const [showExplanation, setShowExplanation] = useState(false);
+  const [userName, setUserName] = useState('');
+  const [elapsedTime, setElapsedTime] = useState(0);
 
   useEffect(() => {
     if (currentScreen === 'loading') {
-      const timer = setTimeout(() => setCurrentScreen('quiz'), 1000);
+      const timer = setTimeout(() => setCurrentScreen('themes'), 2500);
       return () => clearTimeout(timer);
     }
   }, [currentScreen]);
 
-  const handleSelectAnswer = (answer: string) => {
-    const existingAnswer = userAnswers.find(a => a.questionId === questions[currentQuestion].id);
-    if (existingAnswer) return;
+  useEffect(() => {
+    if (currentScreen === 'quiz') {
+      const interval = setInterval(() => {
+        setElapsedTime((prev) => prev + 1);
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [currentScreen]);
 
-    const isCorrect = answer === questions[currentQuestion].correctAnswer;
-    setUserAnswers([...userAnswers, { questionId: questions[currentQuestion].id, answer, isCorrect }]);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentScreen, currentQuestion]);
+
+  const activeQuestions = selectedTheme ? questionsByTheme[selectedTheme] : [];
+  const question = activeQuestions[currentQuestion];
+  const currentAnswer = question
+    ? userAnswers.find((answer) => answer.questionId === question.id)
+    : undefined;
+
+  const handleSelectTheme = (theme: ThemeName) => {
+    setSelectedTheme(theme);
+    setCurrentQuestion(0);
+    setUserAnswers([]);
+    setShowExplanation(false);
+    setElapsedTime(0);
+    setCurrentScreen('quiz');
+  };
+
+  const handleSelectAnswer = (answer: string) => {
+    if (!question || currentAnswer) return;
+
+    const isCorrect = answer === question.correctAnswer;
+    setUserAnswers((previous) => [...previous, { questionId: question.id, answer, isCorrect }]);
     setShowExplanation(true);
   };
 
-  const getCurrentAnswer = () => userAnswers.find(a => a.questionId === questions[currentQuestion].id);
-
   const handleNextQuestion = () => {
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
+    if (currentQuestion < activeQuestions.length - 1) {
+      setCurrentQuestion((previous) => previous + 1);
       setShowExplanation(false);
-    } else {
-      setCurrentScreen('results');
+      return;
     }
+
+    setCurrentScreen('results');
   };
 
-  const calculateScore = () => userAnswers.filter(a => a.isCorrect).length;
+  const handleRestartTheme = () => {
+    setCurrentQuestion(0);
+    setUserAnswers([]);
+    setShowExplanation(false);
+    setElapsedTime(0);
+    setCurrentScreen('quiz');
+  };
+
+  const handleChooseAnotherTheme = () => {
+    setSelectedTheme(null);
+    setCurrentQuestion(0);
+    setUserAnswers([]);
+    setShowExplanation(false);
+    setElapsedTime(0);
+    setCurrentScreen('themes');
+  };
+
+  const calculateScore = () => userAnswers.filter((answer) => answer.isCorrect).length;
 
   const getPerformanceMessage = (score: number) => {
-    const percentage = (score / questions.length) * 100;
-    if (percentage === 100) return "Perfeito! Você domina completamente o conteúdo!";
-    if (percentage >= 80) return "Excelente! Você tem um ótimo conhecimento!";
-    if (percentage >= 60) return "Bom trabalho! Continue estudando para melhorar ainda mais!";
-    if (percentage >= 40) return "Você está no caminho certo! Revise os conteúdos e tente novamente!";
-    return "Continue estudando! A prática leva à perfeição!";
+    const percentage = activeQuestions.length ? (score / activeQuestions.length) * 100 : 0;
+
+    if (percentage === 100) return 'Desempenho impecável. Você está em nível altamente competitivo neste tema.';
+    if (percentage >= 80) return 'Excelente resultado. Você demonstra domínio consistente de conteúdos de alto nível.';
+    if (percentage >= 60) return 'Bom desempenho. Com ajustes pontuais, você pode elevar bastante sua performance.';
+    if (percentage >= 40) return 'Você tem uma base promissora, mas este tema ainda exige revisão estratégica.';
+    return 'Este tema pede reforço mais intenso. Vale revisar teoria, legislação e interpretação das alternativas.';
+  };
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
   // Tela de Boas-vindas
   if (currentScreen === 'welcome') {
     return (
-      <div className="min-h-screen bg-[#F5F5DC] py-8 px-4 md:py-12 lg:py-16">
+      <div className="min-h-screen bg-white py-8 px-4 md:py-12 lg:py-16">
         <div className="max-w-2xl lg:max-w-4xl mx-auto">
           <div className="bg-white rounded-2xl p-8 md:p-10 lg:p-12 shadow-lg">
             {/* Logo */}
@@ -147,7 +118,7 @@ export default function QuizDemo() {
             </div>
 
             <h1 className="text-xl md:text-3xl lg:text-4xl font-bold text-center text-gray-900 mb-2 md:mb-3">
-              Bem-vindo ao Simulado PedagoMais
+              Simulado Teste PedagoMais
             </h1>
             <p className="text-center text-gray-600 text-sm md:text-lg mb-8 md:mb-10">
               Simulado Dinâmico e Interativo
@@ -180,15 +151,35 @@ export default function QuizDemo() {
               </div>
             </div>
 
+            {/* Campo de Nome */}
+            <div className="mb-6">
+              <label htmlFor="userName" className="block text-sm md:text-base font-semibold text-gray-700 mb-2">
+                Qual é o seu nome? (Ex: Maria, João)
+              </label>
+              <input
+                type="text"
+                id="userName"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+                placeholder="Ex: Maria"
+                className="w-full px-4 py-3 md:py-4 text-base md:text-lg border-2 border-gray-300 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+              />
+            </div>
+
             {/* Botão Iniciar */}
             <button
-              onClick={() => setCurrentScreen('loading')}
-              className="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold text-base md:text-lg py-4 md:py-5 rounded-xl hover:opacity-90 transition-opacity shadow-lg flex items-center justify-center gap-2"
+              onClick={() => userName.trim() ? setCurrentScreen('loading') : null}
+              disabled={!userName.trim()}
+              className={`w-full font-bold text-base md:text-lg py-4 md:py-5 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 ${
+                userName.trim() 
+                  ? 'bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 cursor-pointer' 
+                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              }`}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
-              Iniciar Simulado Gratuito
+              Iniciar
             </button>
           </div>
         </div>
@@ -199,104 +190,123 @@ export default function QuizDemo() {
   // Tela de Loading
   if (currentScreen === 'loading') {
     return (
-      <div className="min-h-screen bg-[#F5F5DC] flex items-center justify-center px-4">
-        <div className="text-center">
-          <div className="inline-block w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4"></div>
-          <p className="text-lg font-semibold text-gray-700">Preparando seu simulado...</p>
+      <div className="min-h-screen bg-white flex items-center justify-center px-4">
+        <div className="text-center max-w-md">
+          <div className="inline-block w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mb-6"></div>
+          <p className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+            {userName}, estamos carregando os temas
+          </p>
+          <div className="flex justify-center gap-1 mt-4">
+            <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
+            <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
+            <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Tela de Temas
+  if (currentScreen === 'themes') {
+    return (
+      <div className="min-h-screen bg-white py-8 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-8">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center">
+              <span className="bg-gradient-to-r from-primary via-secondary to-accent-cyan bg-clip-text text-transparent">
+                {userName}
+              </span>
+              <span className="text-gray-900">, selecione um tema</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            {themes.map((theme) => (
+              <button
+                key={theme.name}
+                type="button"
+                onClick={() => handleSelectTheme(theme.name)}
+                className={`${theme.color} rounded-2xl p-4 md:p-6 shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-primary text-left`}
+              >
+                <div className="text-center">
+                  <div className="text-3xl md:text-4xl mb-2 md:mb-3">{theme.icon}</div>
+                  <p className="font-semibold text-gray-800 text-xs md:text-sm leading-tight">{theme.name}</p>
+                </div>
+              </button>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <p className="text-gray-600 text-sm md:text-base">
+              Toque em um tema para abrir imediatamente as 5 questões desse assunto
+            </p>
+          </div>
         </div>
       </div>
     );
   }
 
   // Tela de Resultados
-  if (currentScreen === 'results') {
+  if (currentScreen === 'results' && selectedTheme) {
     const score = calculateScore();
-    const percentage = (score / questions.length) * 100;
 
     return (
-      <div className="min-h-screen bg-[#F5F5DC] py-8 px-4 md:py-12 lg:py-16">
-        <div className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg text-center">
-            <div className="mb-6">
-              <svg className="w-20 h-20 mx-auto text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-              </svg>
+      <div className="min-h-screen bg-white py-8 px-4 md:py-12">
+        <div className="max-w-3xl mx-auto">
+          <div className="bg-white rounded-3xl shadow-lg border border-gray-100 p-8 md:p-10 text-center">
+            <p className="text-sm md:text-base font-semibold text-primary mb-2">{selectedTheme}</p>
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3">
+              {userName}, você concluiu este tema
+            </h2>
+            <p className="text-gray-600 mb-4">{getPerformanceMessage(score)}</p>
+
+            <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl py-6 px-4 md:py-8 md:px-6 mb-4">
+              <p className="text-5xl md:text-6xl font-bold text-primary mb-2">{score}/{activeQuestions.length}</p>
+              <p className="text-gray-700 font-medium">Acertos no simulado teste</p>
             </div>
 
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Simulado Concluído!</h1>
-            
-            <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl p-6 mb-6">
-              <p className="text-5xl font-bold text-primary mb-2">{score}/{questions.length}</p>
-              <p className="text-lg text-gray-700">Acertos: {percentage.toFixed(0)}%</p>
-            </div>
-
-            <p className="text-lg text-gray-700 mb-8">{getPerformanceMessage(score)}</p>
-
-            {/* CTA Box */}
-            <div className="bg-[#F5F2FE] border-2 border-green-500 rounded-xl md:rounded-2xl p-4 md:p-8 mb-6 md:mb-8 text-left">
-              <div className="mb-3 md:mb-4">
-                <h3 className="text-lg md:text-2xl font-bold text-gray-900 leading-tight text-center">🎯 Quer Garantir Sua Aprovação?</h3>
+            {/* CTA Section */}
+            <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-3xl border-2 border-green-500 py-6 px-4 md:py-8 md:px-6 text-left">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+                  Quer Garantir Sua Aprovação?
+                </h3>
+                <p className="text-lg text-gray-700 mb-2">Esta foi apenas uma pequena amostra!</p>
+                <p className="text-base text-gray-600">
+                  Imagine dominar <span className="font-bold text-purple-600">TODOS os conteúdos</span> que caem nas provas e conquistar sua vaga dos sonhos:
+                </p>
               </div>
-              
-              <p className="text-sm md:text-lg text-gray-700 mb-1 md:mb-2 text-center font-semibold">
-                Esta foi apenas uma pequena amostra!
-              </p>
-              <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6 text-center">
-                Imagine dominar <span className="font-bold text-primary">TODOS os conteúdos</span> que caem nas provas e conquistar sua vaga dos sonhos:
-              </p>
 
-              <div className="space-y-3 md:space-y-4 mb-4 md:mb-6">
-                <div className="flex items-start gap-2 md:gap-3">
-                  <svg className="w-5 h-5 md:w-6 md:h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                  </svg>
-                  <div>
-                    <p className="text-sm md:text-base font-bold text-gray-900">✨ Mais de 800 Questões Comentadas</p>
-                    <p className="text-xs md:text-sm text-gray-600 leading-relaxed">Treine com questões reais de concursos e aprenda com explicações detalhadas que vão direto ao ponto</p>
-                  </div>
+              <div className="space-y-3 mb-6">
+                <div>
+                  <p className="font-bold text-gray-900 mb-1">✨ Mais de 800 Questões Comentadas</p>
+                  <p className="text-sm text-gray-600">Treine com questões reais de concursos e aprenda com explicações detalhadas que vão direto ao ponto</p>
                 </div>
 
-                <div className="flex items-start gap-2 md:gap-3">
-                  <svg className="w-5 h-5 md:w-6 md:h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                  </svg>
-                  <div>
-                    <p className="text-sm md:text-base font-bold text-gray-900">🧠 Mapas Mentais que Facilitam TUDO</p>
-                    <p className="text-xs md:text-sm text-gray-600 leading-relaxed">Memorize os conteúdos mais complexos em minutos com nossos mapas visuais exclusivos</p>
-                  </div>
+                <div>
+                  <p className="font-bold text-gray-900 mb-1">🧠 Mapas Mentais que Facilitam TUDO</p>
+                  <p className="text-sm text-gray-600">Memorize os conteúdos mais complexos em minutos com nossos mapas visuais exclusivos</p>
                 </div>
 
-                <div className="flex items-start gap-2 md:gap-3">
-                  <svg className="w-5 h-5 md:w-6 md:h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                  </svg>
-                  <div>
-                    <p className="text-sm md:text-base font-bold text-gray-900">🏆 Certificado Assim que se Inscrever</p>
-                    <p className="text-xs md:text-sm text-gray-600 leading-relaxed">Receba seu certificado imediatamente e turbine seu currículo para se destacar nos processos seletivos</p>
-                  </div>
+                <div>
+                  <p className="font-bold text-gray-900 mb-1">👩‍🎓 Certificado Assim que se Inscrever</p>
+                  <p className="text-sm text-gray-600">Receba seu certificado imediatamente e turbine seu currículo para se destacar nos processos seletivos</p>
                 </div>
               </div>
 
-              <div className="bg-yellow-50 border-l-4 border-yellow-500 p-3 md:p-4 mb-3 md:mb-4 rounded-r-lg">
-                <p className="text-xs md:text-sm font-semibold text-gray-800">
-                  ⚡ <span className="text-yellow-700">Milhares de aprovados</span> já usaram o PedagoMais para conquistar suas vagas!
+              <div className="bg-yellow-50 border-l-4 border-yellow-500 rounded-r-xl p-4 mb-6">
+                <p className="text-sm md:text-base text-gray-800">
+                  ⚡ <span className="font-bold">Milhares de aprovados</span> já usaram o SimulaMais para conquistar suas vagas!
                 </p>
               </div>
 
               <a
                 href="/#pagamento"
-                className="w-full bg-green-600 hover:bg-green-700 text-white font-bold text-base md:text-lg py-3 md:py-4 rounded-xl transition-colors shadow-lg flex items-center justify-center gap-2"
+                className="block w-full bg-green-600 hover:bg-green-700 text-white text-center font-bold text-lg py-4 rounded-xl transition-colors shadow-lg"
               >
-                <span className="leading-tight">Eu quero</span>
+                Eu quero
               </a>
             </div>
-
-            <a
-              href="/"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary text-white font-bold px-8 py-4 rounded-xl hover:opacity-90 transition-opacity"
-            >
-              Voltar para Home
-            </a>
           </div>
         </div>
       </div>
@@ -304,141 +314,116 @@ export default function QuizDemo() {
   }
 
   // Tela do Quiz
-  const question = questions[currentQuestion];
-  const currentAnswer = getCurrentAnswer();
-
-  return (
-    <div className="min-h-screen bg-[#F5F5DC]">
-      {/* Header Fixo */}
-      <div className="fixed top-0 left-0 right-0 bg-white p-4 shadow-md z-50">
-        <div className="max-w-4xl mx-auto">
-          <div className="mb-2">
-            <span className="text-sm font-semibold text-gray-600">Questão {currentQuestion + 1} de {questions.length}</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div className="bg-primary h-2 rounded-full transition-all" style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}></div>
+  if (currentScreen === 'quiz' && selectedTheme && question) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <div className="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 px-4 py-3 z-50">
+          <div className="max-w-2xl mx-auto flex items-center justify-between">
+            <button
+              type="button"
+              onClick={handleChooseAnotherTheme}
+              className="text-gray-600 hover:text-gray-900"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-1 bg-primary rounded-full"></div>
+              <span className="text-sm font-medium text-gray-700">{currentQuestion + 1}/{activeQuestions.length}</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-600">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-sm">{formatTime(elapsedTime)}</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Conteúdo com padding-top para compensar o header fixo */}
-      <div className="max-w-4xl mx-auto px-4 pt-24 pb-8">
-        {/* Questão */}
-        <div className="mb-6">
-          {/* Tema */}
-          <div className="text-center mb-4">
-            <p className="text-sm text-gray-600 mb-2">Tema</p>
-            <div className="inline-flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-lg">
-              <span className="text-2xl">📚</span>
-              <span className="font-semibold text-blue-900">{question.theme}</span>
+        <div className="max-w-2xl mx-auto px-4 pt-20 pb-10">
+          <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <div className="text-center mb-6">
+              <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">TEMA</p>
+              <p className="text-sm font-bold text-gray-900 uppercase">{selectedTheme}</p>
             </div>
-          </div>
 
-          {/* Subtema */}
-          <div className="text-center mb-6">
-            <p className="text-sm text-gray-600 mb-2">Subtema</p>
-            <p className="font-semibold text-green-700">{question.subtheme}</p>
-          </div>
-
-          {/* Pergunta */}
-          <div className="mb-6">
-            <p className="text-sm text-gray-600 mb-3 text-center">Pergunta</p>
-            <div className="bg-blue-50 border-l-4 border-blue-500 rounded-r-lg p-4">
-              <p className="text-base md:text-lg text-gray-900">{question.question}</p>
+            <div className="text-center mb-6">
+              <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">SUBTEMA</p>
+              <p className="text-sm text-gray-700">{question.subtheme}</p>
             </div>
-          </div>
 
-          {/* Opções */}
-          <div className="space-y-3">
-            {question.options.map((option) => {
-              const isSelected = currentAnswer?.answer === option.letter;
-              const isCorrect = option.letter === question.correctAnswer;
-              const showResult = currentAnswer !== undefined;
+            <div className="mb-6">
+              <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-3 text-center">PERGUNTA</p>
+              <div className="border-l-4 border-blue-600 pl-4 py-2">
+                <p className="text-base text-gray-900 leading-relaxed">{question.question}</p>
+              </div>
+            </div>
 
-              let bgColor = 'bg-white hover:bg-gray-50 border-gray-300';
-              let letterBg = 'bg-gray-100';
-              let letterColor = 'text-gray-700';
-              let animation = '';
-              
-              if (showResult) {
-                if (isCorrect) {
-                  bgColor = 'bg-white border-green-500';
-                  letterBg = 'bg-green-500';
-                  letterColor = 'text-white';
-                  animation = 'animate-pulse-once';
-                } else if (isSelected) {
-                  bgColor = 'bg-white border-red-500';
-                  letterBg = 'bg-red-500';
-                  letterColor = 'text-white';
-                  animation = 'animate-shake';
+            <div className="space-y-4">
+              {question.options.map((option) => {
+                const isSelected = currentAnswer?.answer === option.letter;
+                const isCorrect = option.letter === question.correctAnswer;
+                const showResult = currentAnswer !== undefined;
+
+                let bgColor = '';
+                let letterBorder = 'border-gray-400';
+                let letterColor = 'text-gray-700';
+
+                if (showResult) {
+                  if (isCorrect) {
+                    bgColor = 'bg-green-50';
+                    letterBorder = 'border-green-500';
+                    letterColor = 'text-green-700';
+                  } else if (isSelected) {
+                    bgColor = 'bg-red-50';
+                    letterBorder = 'border-red-500';
+                    letterColor = 'text-red-700';
+                  }
                 }
-              }
 
-              return (
-                <button
-                  key={option.letter}
-                  onClick={() => handleSelectAnswer(option.letter)}
-                  disabled={currentAnswer !== undefined}
-                  className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-300 ${bgColor} ${animation} ${currentAnswer ? 'cursor-not-allowed' : 'cursor-pointer hover:shadow-md'}`}
-                >
-                  <div className="flex items-start gap-4">
-                    <span className={`${letterBg} ${letterColor} w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0`}>
-                      {option.letter}
-                    </span>
-                    <span className={`flex-1 pt-2 ${showResult && isCorrect ? 'text-gray-900 font-medium' : 'text-gray-800'}`}>
-                      {option.text}
-                    </span>
-                    {showResult && isCorrect && (
-                      <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-2 animate-bounce-once" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    )}
-                    {showResult && isSelected && !isCorrect && (
-                      <svg className="w-6 h-6 text-red-600 flex-shrink-0 mt-2 animate-shake" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                    )}
-                  </div>
-                </button>
-              );
-            })}
+                return (
+                  <button
+                    key={option.letter}
+                    type="button"
+                    onClick={() => handleSelectAnswer(option.letter)}
+                    disabled={currentAnswer !== undefined}
+                    className={`w-full text-left py-3 transition-all duration-200 ${bgColor} ${currentAnswer ? 'cursor-not-allowed' : 'cursor-pointer hover:bg-gray-50'}`}
+                  >
+                    <div className="flex items-start gap-3">
+                      <span className={`w-8 h-8 rounded-full border-2 ${letterBorder} ${letterColor} flex items-center justify-center font-semibold text-sm flex-shrink-0 bg-white`}>
+                        {option.letter}
+                      </span>
+                      <span className="flex-1 pt-1 text-gray-800 leading-relaxed text-sm pr-2">{option.text}</span>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
           </div>
+
+          {showExplanation && currentAnswer && (
+            <div className={`rounded-lg p-5 shadow-sm mb-6 border-l-4 ${currentAnswer.isCorrect ? 'bg-green-50 border-green-600' : 'bg-red-50 border-red-600'}`}>
+              <h3 className="font-bold text-base mb-2 ${currentAnswer.isCorrect ? 'text-green-900' : 'text-red-900'}">
+                {currentAnswer.isCorrect ? '✓ Resposta correta!' : `✗ Resposta incorreta. A alternativa certa é ${question.correctAnswer}.`}
+              </h3>
+              <p className="text-gray-700 leading-relaxed text-sm">{question.explanation}</p>
+            </div>
+          )}
+
+          {currentAnswer && (
+            <button
+              type="button"
+              onClick={handleNextQuestion}
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 rounded-lg transition-colors shadow-sm"
+            >
+              {currentQuestion < activeQuestions.length - 1 ? 'Próxima questão' : 'Ver resultado'}
+            </button>
+          )}
         </div>
-
-        {/* Explicação */}
-        {showExplanation && (
-          <div className={`rounded-xl p-6 shadow-lg mb-6 ${currentAnswer?.isCorrect ? 'bg-green-50 border-2 border-green-500' : 'bg-red-50 border-2 border-red-500'}`}>
-            <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
-              {currentAnswer?.isCorrect ? (
-                <>
-                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  Parabéns! Você acertou!
-                </>
-              ) : (
-                <>
-                  <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  Ops! A resposta correta é {question.correctAnswer}
-                </>
-              )}
-            </h3>
-            <p className="text-gray-800">{question.explanation}</p>
-          </div>
-        )}
-
-        {/* Botão Próxima */}
-        {currentAnswer && (
-          <button
-            onClick={handleNextQuestion}
-            className="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 rounded-xl hover:opacity-90 transition-opacity shadow-lg"
-          >
-            {currentQuestion < questions.length - 1 ? 'Próxima Questão' : 'Ver Resultado'}
-          </button>
-        )}
       </div>
-    </div>
-  );
+    );
+  }
+
+  return null;
 }
