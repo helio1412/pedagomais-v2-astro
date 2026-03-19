@@ -124,33 +124,6 @@ export default function QuizDemo() {
               Simulado Dinâmico e Interativo
             </p>
 
-            {/* Box de Aviso */}
-            <div className="bg-blue-50 border-l-4 border-blue-500 rounded-r-lg p-4 md:p-6 mb-6 md:mb-8">
-              <div className="flex items-start gap-3">
-                <svg className="w-5 h-5 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <div>
-                  <h3 className="font-semibold text-base md:text-lg text-blue-900 mb-2">Esta é uma Amostra Gratuita</h3>
-                  <p className="text-sm md:text-base text-gray-700 mb-3">
-                    Este é um teste grátis para você experimentar e ver como funciona nosso simulado. 
-                    São 5 questões onde você recebe a resposta na hora e uma explicação completa para aprender melhor!
-                  </p>
-                  <p className="text-sm md:text-base text-gray-700">
-                    <span className="inline-flex items-center gap-1">
-                      <span className="w-3 h-3 bg-green-500 rounded-full"></span>
-                      <span className="font-medium">Verde = Correta</span>
-                    </span>
-                    <span className="mx-2">•</span>
-                    <span className="inline-flex items-center gap-1">
-                      <span className="w-3 h-3 bg-red-500 rounded-full"></span>
-                      <span className="font-medium">Vermelho = Errada</span>
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </div>
-
             {/* Campo de Nome */}
             <div className="mb-6">
               <label htmlFor="userName" className="block text-sm md:text-base font-semibold text-gray-700 mb-2">
