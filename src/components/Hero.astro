@@ -45,7 +45,7 @@ import VideoPlayer from './islands/VideoPlayer';
       
       <VideoPlayer 
         client:visible
-        videoId="6967ecea3565f9f404c7efbf"
+        videoId="69cb1d1b26958024656d79a1"
         accountId="d8c67f45-3b94-4e79-acef-492de65509d1"
       />
 
@@ -87,3 +87,9 @@ import VideoPlayer from './islands/VideoPlayer';
   </div>
 </section>
 
+<style is:global>
+  vturb-smartplayer,
+  vturb-smartplayer *:not(video) {
+    background-color: transparent !important;
+  }
+</style>
