@@ -103,7 +103,7 @@ export default function PricingSection() {
               </p>
               <p className="text-neutral-dark/60 text-lg mb-2">Por apenas:</p>
               <p className="text-5xl md:text-6xl font-bold text-primary mb-2">
-                R$ 47,00
+                R$ 37,00
               </p>
               <p className="text-lg text-secondary font-semibold">
                 Pagamento único - Acesso vitalício
